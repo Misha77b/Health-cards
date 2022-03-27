@@ -3,31 +3,31 @@ import { useDispatch, useSelector } from 'react-redux';
 import UseStylesHeader from './UseStylesHeader';
 import Button from '@mui/material/Button';
 import Modals from '../Modals/Modals';
-import { authSuccess } from '../../API/auth/auth.actions';
 
 const Header = () => {
 
   UseStylesHeader();
 
-  const [ headerBtn, setHeaderBtn ] = useState("Log in");
+  // const [ headerBtn, setHeaderBtn ] = useState("Log in");
   const [open, setOpen] = useState(false);
   const isAuth = localStorage.getItem('token');
-
   const auth = useSelector(state => state.authReducer.auth);
 
-  useEffect(() => {
-    if(isAuth){
-      setHeaderBtn("Create visit");
-    }
-  }, []);
+  // useEffect(() => {
+  //   if(isAuth){
+  //     setHeaderBtn("Create visit");
+  //   }
+  // }, []);
 
   const handleOpen = () => {
     setOpen(true);
   };
 
   const handleClose = () => {
-    setHeaderBtn("Create visit");
     setOpen(false);
+    // if(auth){
+    //   setHeaderBtn("Create visit");
+    // }
   };
 
   return (
@@ -46,7 +46,8 @@ const Header = () => {
               borderRadius: '5px',
               }}
           > 
-              {headerBtn} 
+              {/* {headerBtn}  */}
+              {!isAuth ? 'Log in' : 'Create visit'}
           </Button>
       </div>
       {open && 

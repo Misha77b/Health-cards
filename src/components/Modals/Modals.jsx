@@ -6,6 +6,7 @@ import Modal from '@mui/material/Modal';
 import CloseIcon from '@mui/icons-material/Close';
 import LogIn from './LogIn/LogIn';
 import PropTypes from 'prop-types';
+import CreateVisit from './CreateVisit/CreateVisit';
 
 const style = {
   position: 'absolute',
@@ -22,6 +23,7 @@ const style = {
 const Modals = ({open, handleClose}) => {
 
   const auth = useSelector(state => state.authReducer.auth);
+  const isAuth = localStorage.getItem('token');
 
   useEffect(() => {
     if(auth){
@@ -52,9 +54,13 @@ const Modals = ({open, handleClose}) => {
             <CloseIcon />
           </Button>
           <div>
-            <LogIn 
+            {!isAuth ? <LogIn 
               handleClose={handleClose}
-            />
+              /> : 
+              <CreateVisit
+                handleClose={handleClose}
+              />
+            }
           </div>
         </Box>
       </Modal>
