@@ -9,7 +9,7 @@ const Main = () => {
   UseStylesMain()
   
   const isAuth = localStorage.getItem('token');
-  // Think about reloading the page afther auth
+  const auth = useSelector(state => state.authReducer.auth);
 
   return (
     <div className='main'>
@@ -19,9 +19,3 @@ const Main = () => {
 }
 
 export default Main
-
-// Think about conditional rendering immediatley afther auth
-
-
-// const auth = useSelector(state => state.authReducer.auth);
-// {auth ?  <CardsList /> : <PageLogInInfo />}

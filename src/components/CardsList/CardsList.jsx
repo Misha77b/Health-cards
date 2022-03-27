@@ -3,9 +3,9 @@ import React from 'react'
 const CardsList = () => {
     
   return (
-    <div>
-        No items have been added...
-    </div>
+    <>
+      <h1 style={{margin: '325px auto'}} >No items have been added...</h1>
+    </>
   )
 }
 

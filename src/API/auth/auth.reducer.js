@@ -10,8 +10,6 @@ const authReducer = (state = initialState, action) => {
             return{
                 ...state,
                 auth: action.payload,
-                
-                // Think about payload success
             }
         }
 
