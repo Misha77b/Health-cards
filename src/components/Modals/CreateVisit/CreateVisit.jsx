@@ -1,6 +1,6 @@
 import React from 'react';
 import { useDispatch } from 'react-redux';
-import { useFormik } from 'formik';
+import { useFormik, Field } from 'formik';
 import * as yup from 'yup';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
@@ -31,6 +31,7 @@ const CreateVisit = ( {handleClose} ) => {
         fullName: '',
         visitPurpose: '',
         visitShortDescription: '',
+        doctor: ''
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
@@ -38,6 +39,7 @@ const CreateVisit = ( {handleClose} ) => {
             fullName: values.fullName,
             visitPurpose: values.visitPurpose,
             visitShortDescription: values.visitShortDescription,
+            doctor: values.doctor,
         }
         // dispatch(logIn(login));
         handleClose();
@@ -50,47 +52,62 @@ const CreateVisit = ( {handleClose} ) => {
             style={style}
             onSubmit={formik.handleSubmit}
           >
-              <TextField  
-                fullWidth
-                id="fullName"
-                name="fullName"
-                label="Full name"
-                value={formik.values.fullName}
-                onChange={formik.handleChange}
-                error={formik.touched.fullName && Boolean(formik.errors.fullName)}
-                helperText={formik.touched.fullName && formik.errors.fullName}
-              />
-              <TextField
-                fullWidth
-                id="visitPurpose"
-                name="visitPurpose"
-                label="Visit purpose"
-                type="visitPurpose"
-                value={formik.values.visitPurpose}
-                onChange={formik.handleChange}
-                error={formik.touched.visitPurpose && Boolean(formik.errors.visitPurpose)}
-                helperText={formik.touched.visitPurpose && formik.errors.visitPurpose}
-              />
-              <TextField
-                fullWidth
-                id="visitShortDescription"
-                name="visitShortDescription"
-                label="Visit short description"
-                type="visitShortDescription"
-                value={formik.values.visitShortDescription}
-                onChange={formik.handleChange}
-                error={formik.touched.visitShortDescription && Boolean(formik.errors.visitShortDescription)}
-                helperText={formik.touched.visitvisitShortDescriptionPurpose && formik.errors.visitShortDescription}
-              />
-              <Button sx={{
-                  width: '175px', 
-                  margin: '0 auto',
-                }}
-                variant='contained'
-                type="submit"
-              >
-                Create visit
-              </Button>
+
+
+            {/* Think about selector for doctors, onChange, onSubmit etc */}
+            <select
+              name="color"
+              style={{ display: 'block' }}
+            >
+              <option value="" label="Select a doctor" />
+              <option value="Dentist" label="Dentist" />
+              <option value="Therapist" label="Therapist" />
+              <option value="Cardiologist" label="Cardiologist" />
+            </select>
+
+            {/*  */}
+
+            <TextField  
+              fullWidth
+              id="fullName"
+              name="fullName"
+              label="Full name"
+              value={formik.values.fullName}
+              onChange={formik.handleChange}
+              error={formik.touched.fullName && Boolean(formik.errors.fullName)}
+              helperText={formik.touched.fullName && formik.errors.fullName}
+            />
+            <TextField
+              fullWidth
+              id="visitPurpose"
+              name="visitPurpose"
+              label="Visit purpose"
+              type="visitPurpose"
+              value={formik.values.visitPurpose}
+              onChange={formik.handleChange}
+              error={formik.touched.visitPurpose && Boolean(formik.errors.visitPurpose)}
+              helperText={formik.touched.visitPurpose && formik.errors.visitPurpose}
+            />
+            <TextField
+              fullWidth
+              id="visitShortDescription"
+              name="visitShortDescription"
+              label="Visit short description"
+              type="visitShortDescription"
+              value={formik.values.visitShortDescription}
+              onChange={formik.handleChange}
+              error={formik.touched.visitShortDescription && Boolean(formik.errors.visitShortDescription)}
+              helperText={formik.touched.visitvisitShortDescriptionPurpose && formik.errors.visitShortDescription}
+            />
+            <Button sx={{
+                width: '175px', 
+                margin: '0 auto',
+              }}
+              variant='contained'
+              type="submit"
+            >
+              Create visit
+            </Button>
           </form>
         </div>
       );
