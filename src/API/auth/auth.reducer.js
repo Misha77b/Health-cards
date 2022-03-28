@@ -2,7 +2,7 @@ import { AUTH_ERROR, AUTH_SUCCESS } from "./auth.actions";
 
 const initialState = {
     auth: false,
-    authError: null,
+    // authError: null,
 }
 
 const authReducer = (state = initialState, action) => {

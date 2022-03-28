@@ -1,10 +1,19 @@
-import React from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import { useFormik, Field } from 'formik';
 import * as yup from 'yup';
+import { MenuItem } from '@mui/material';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
 import PropTypes from 'prop-types';
+import { selectDoctor } from '../../../API/chooseDoctor/chooseDoctor.actions';
+import { getChooseDoctor } from '../../../API/chooseDoctor/chooseDoctor.thunks';
+
+// const doctorsSelect = [
+//   {value: "Dentist", label: "Dentist", name: "Dentist"},
+//   {value: "Therapist", label: "Therapist", name: "Therapist"},
+//   {value: "Cardiologist", label: "Cardiologist", name: "Cardiologist"},
+// ]
 
 const style={                
   display: 'flex', 
@@ -25,6 +34,21 @@ const validationSchema = yup.object({
 
 const CreateVisit = ( {handleClose} ) => {
     const dispatch = useDispatch();
+
+    const setChooseDoctor = useSelector((state) => state.chooseDoctorReducer.setChooseDoctor);
+    const selectedDoctor = useSelector((state) => state.chooseDoctorReducer.selectedDoctor);
+
+    console.log(setChooseDoctor);
+    console.log(selectedDoctor);
+
+    useEffect(() => {
+      dispatch(getChooseDoctor())
+    }, [])
+
+    // handleSelector change method think about it
+    const handleChangeDoctor = (event) => {
+      dispatch(selectDoctor(event.target.value)); 
+    };
 
     const formik = useFormik({
       initialValues: {
@@ -52,8 +76,25 @@ const CreateVisit = ( {handleClose} ) => {
             style={style}
             onSubmit={formik.handleSubmit}
           >
+            <TextField
+              select
+              label='Choose doctor'
+              name='chosenDoctor'
+              value={selectedDoctor}
+              onChange={handleChangeDoctor}
+              >
+              {setChooseDoctor?.map((doctor) => (
+                  <MenuItem 
+                    className='shipment--text'
+                    key={doctor.value}
+                    value={doctor.value}>
+                      {doctor.label}
+                  </MenuItem>
+              ))}
+          </TextField>
+            
             {/* Think about selector for doctors, onChange, onSubmit etc */}
-            <select
+            {/* <select
               name="chosenDoctor"
               style={{ display: 'block' }}
             >
@@ -61,7 +102,7 @@ const CreateVisit = ( {handleClose} ) => {
               <option value="Dentist" label="Dentist" />
               <option value="Therapist" label="Therapist" />
               <option value="Cardiologist" label="Cardiologist" />
-            </select>
+            </select> */}
 
             {/*  */}
 

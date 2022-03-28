@@ -3,6 +3,7 @@ import { configureStore } from '@reduxjs/toolkit';
 import thunk from 'redux-thunk';
 import authReducer from '../API/auth/auth.reducer';
 import errorHandlerReducer from '../API/errorHandler/errorHandler.reducer';
+import chooseDoctorReducer from '../API/chooseDoctor/chooseDoctor.reducer';
 
 
 const reduxDevToolsCompose = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'];
@@ -10,6 +11,7 @@ const reduxDevToolsCompose = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'];
 const rootReducer = combineReducers({
   authReducer,
   errorHandlerReducer,
+  chooseDoctorReducer,
 });
 
 const store = configureStore({
