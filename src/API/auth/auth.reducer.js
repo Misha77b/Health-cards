@@ -1,7 +1,8 @@
-import { AUTH_SUCCESS } from "./auth.actions";
+import { AUTH_ERROR, AUTH_SUCCESS } from "./auth.actions";
 
 const initialState = {
     auth: false,
+    authError: null,
 }
 
 const authReducer = (state = initialState, action) => {
@@ -12,6 +13,13 @@ const authReducer = (state = initialState, action) => {
                 auth: action.payload,
             }
         }
+
+        // case(AUTH_ERROR): {
+        //     return{
+        //         ...state, 
+        //         authError: action.payload,
+        //     }
+        // }
 
         default:
             return state;

@@ -1,4 +1,5 @@
-import { authError, authSuccess } from "./auth.actions";
+import { authSuccess, authError } from "./auth.actions";
+import { setError } from "../errorHandler/errorHandler.actions";
 
 export const logIn = (userDate) => {
     return (dispatch) => {
@@ -9,29 +10,26 @@ export const logIn = (userDate) => {
             },
             body: JSON.stringify(userDate)
         })
-        // .then(
-        //     response => {
-        //       if (response.status !== 200) {
-        //         dispatch(authError(response.text()));
-        //         return Promise.reject();
-        //       } else {
-        //         return response.text();
-        //       }
-        //     },
-        //     error => {
-        //       dispatch(authError(error.text()));
-        //       return Promise.reject();
-        //     }
-        //   )
-        //   .then(data => {
-        //     dispatch(authSuccess(json));
-        //   });
-                
-        .then(res => res.text())
+
+        .then(res => {
+            if(res.status !== 200) {
+                return 
+            } else {
+                return res.text()
+            }
+        })
         .then(token => {
-          console.log(token);
-          localStorage.setItem('token', token)
-          dispatch(authSuccess(token))
+          if(token === undefined) {
+            //   Permanent error handler
+            return alert('Log in error')
+          } else {
+            console.log(token);
+            localStorage.setItem('token', token)
+            dispatch(authSuccess(token))
+          }
+        })
+        .catch(err => {
+            dispatch(setError(err))
         })
     }
 }

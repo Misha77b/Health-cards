@@ -31,7 +31,7 @@ const CreateVisit = ( {handleClose} ) => {
         fullName: '',
         visitPurpose: '',
         visitShortDescription: '',
-        doctor: ''
+        chosenDoctor: ''
       },
       validationSchema: validationSchema,
       onSubmit: (values) => {
@@ -39,7 +39,7 @@ const CreateVisit = ( {handleClose} ) => {
             fullName: values.fullName,
             visitPurpose: values.visitPurpose,
             visitShortDescription: values.visitShortDescription,
-            doctor: values.doctor,
+            chosenDoctor: values.chosenDoctor,
         }
         // dispatch(logIn(login));
         handleClose();
@@ -52,11 +52,9 @@ const CreateVisit = ( {handleClose} ) => {
             style={style}
             onSubmit={formik.handleSubmit}
           >
-
-
             {/* Think about selector for doctors, onChange, onSubmit etc */}
             <select
-              name="color"
+              name="chosenDoctor"
               style={{ display: 'block' }}
             >
               <option value="" label="Select a doctor" />
