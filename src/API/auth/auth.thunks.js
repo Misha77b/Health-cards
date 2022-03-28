@@ -20,7 +20,7 @@ export const logIn = (userDate) => {
         })
         .then(token => {
           if(token === undefined) {
-            //   Permanent error handler
+            //   Temporary error handler
             return alert('Log in error')
           } else {
             console.log(token);
