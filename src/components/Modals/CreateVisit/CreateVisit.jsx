@@ -7,13 +7,9 @@ import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
 import PropTypes from 'prop-types';
 import { selectDoctor } from '../../../API/chooseDoctor/chooseDoctor.actions';
+import { selectUrgency } from '../../../API/chooseUrgency/chooseUrgency.actions';
 import { getChooseDoctor } from '../../../API/chooseDoctor/chooseDoctor.thunks';
-
-// const doctorsSelect = [
-//   {value: "Dentist", label: "Dentist", name: "Dentist"},
-//   {value: "Therapist", label: "Therapist", name: "Therapist"},
-//   {value: "Cardiologist", label: "Cardiologist", name: "Cardiologist"},
-// ]
+import { getChooseUrgency } from '../../../API/chooseUrgency/chooseUrgency.thunks';
 
 const style={                
   display: 'flex', 
@@ -37,17 +33,26 @@ const CreateVisit = ( {handleClose} ) => {
 
     const setChooseDoctor = useSelector((state) => state.chooseDoctorReducer.setChooseDoctor);
     const selectedDoctor = useSelector((state) => state.chooseDoctorReducer.selectedDoctor);
+    const setChooseUrgency = useSelector((state) => state.chooseUrgencyReducer.setChooseUrgency);
+    const selectedUrgency = useSelector((state) => state.chooseUrgencyReducer.selectedUrgency);
 
     console.log(setChooseDoctor);
     console.log(selectedDoctor);
+    console.log(setChooseUrgency);
+    console.log(selectedUrgency);
 
     useEffect(() => {
-      dispatch(getChooseDoctor())
-    }, [])
+      dispatch(getChooseDoctor());
+      dispatch(getChooseUrgency());
+    }, []);
 
     // handleSelector change method think about it
     const handleChangeDoctor = (event) => {
       dispatch(selectDoctor(event.target.value)); 
+    };
+
+    const handleChangeUrgency = (event) => {
+      dispatch(selectUrgency(event.target.value)); 
     };
 
     const formik = useFormik({
@@ -55,6 +60,7 @@ const CreateVisit = ( {handleClose} ) => {
         fullName: '',
         visitPurpose: '',
         visitShortDescription: '',
+        urgency: '',
         chosenDoctor: ''
       },
       validationSchema: validationSchema,
@@ -63,6 +69,7 @@ const CreateVisit = ( {handleClose} ) => {
             fullName: values.fullName,
             visitPurpose: values.visitPurpose,
             visitShortDescription: values.visitShortDescription,
+            urgency: values.urgency,
             chosenDoctor: values.chosenDoctor,
         }
         // dispatch(logIn(login));
@@ -76,36 +83,6 @@ const CreateVisit = ( {handleClose} ) => {
             style={style}
             onSubmit={formik.handleSubmit}
           >
-            <TextField
-              select
-              label='Choose doctor'
-              name='chosenDoctor'
-              value={selectedDoctor}
-              onChange={handleChangeDoctor}
-              >
-              {setChooseDoctor?.map((doctor) => (
-                  <MenuItem 
-                    className='shipment--text'
-                    key={doctor.value}
-                    value={doctor.value}>
-                      {doctor.label}
-                  </MenuItem>
-              ))}
-          </TextField>
-            
-            {/* Think about selector for doctors, onChange, onSubmit etc */}
-            {/* <select
-              name="chosenDoctor"
-              style={{ display: 'block' }}
-            >
-              <option value="" label="Select a doctor" />
-              <option value="Dentist" label="Dentist" />
-              <option value="Therapist" label="Therapist" />
-              <option value="Cardiologist" label="Cardiologist" />
-            </select> */}
-
-            {/*  */}
-
             <TextField  
               fullWidth
               id="fullName"
@@ -138,6 +115,46 @@ const CreateVisit = ( {handleClose} ) => {
               error={formik.touched.visitShortDescription && Boolean(formik.errors.visitShortDescription)}
               helperText={formik.touched.visitvisitShortDescriptionPurpose && formik.errors.visitShortDescription}
             />
+            {/* Urgency selector */}
+            <TextField
+              select
+              label='Choose urgency'
+              name='chosenUrgency'
+              value={selectedUrgency}
+              onChange={handleChangeUrgency}
+              >
+              {setChooseUrgency?.map((doctor) => (
+                  <MenuItem 
+                    key={doctor.value}
+                    value={doctor.value}>
+                      {doctor.label}
+                  </MenuItem>
+              ))}
+            </TextField>
+            {/* Doctor selector with further conditional rendering */}
+            <TextField
+              select
+              label='Choose doctor'
+              name='chosenDoctor'
+              value={selectedDoctor}
+              onChange={handleChangeDoctor}
+              >
+              {setChooseDoctor?.map((doctor) => (
+                  <MenuItem 
+                    className='shipment--text'
+                    key={doctor.value}
+                    value={doctor.value}>
+                      {doctor.label}
+                  </MenuItem>
+              ))}
+            </TextField>
+
+            {selectedDoctor === "Dentist" && 
+              <>
+                {/* propper markup fields for dentist, cardiologist and therapist */}
+                <h1>Dentist</h1>
+              </>
+            }
             <Button sx={{
                 width: '175px', 
                 margin: '0 auto',

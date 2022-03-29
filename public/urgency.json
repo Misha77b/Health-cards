@@ -1,0 +1,14 @@
+[
+    {
+        "value": "Normal", 
+        "label": "Normal"
+    },
+    {
+        "value": "Priority", 
+        "label": "Priority"
+    },
+    {
+        "value": "Urgent", 
+        "label": "Urgent"
+    }
+]

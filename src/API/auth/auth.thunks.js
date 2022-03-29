@@ -21,7 +21,7 @@ export const logIn = (userDate) => {
         .then(token => {
           if(token === undefined) {
             //   Temporary error handler
-            return alert('Log in error')
+            return alert('Log in error, wrong email or password')
           } else {
             console.log(token);
             localStorage.setItem('token', token)
