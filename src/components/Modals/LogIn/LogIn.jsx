@@ -39,6 +39,7 @@ const LogIn = ({ handleClose }) => {
         email: values.email,
         password: values.password,
       }
+      console.log(login);
       dispatch(logIn(login));
       handleClose();
     },

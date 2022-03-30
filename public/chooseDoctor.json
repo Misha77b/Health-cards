@@ -1,5 +1,10 @@
 [
     {
+        "value": "Cardiologist", 
+        "label": "Cardiologist", 
+        "name": "Cardiologist"
+    },
+    {
         "value": "Dentist", 
         "label": "Dentist", 
         "name": "Dentist"
@@ -8,10 +13,5 @@
         "value": "Therapist", 
         "label": "Therapist", 
         "name": "Therapist"
-    },
-    {
-        "value": "Cardiologist", 
-        "label": "Cardiologist", 
-        "name": "Cardiologist"
-    }
+    }    
 ]
