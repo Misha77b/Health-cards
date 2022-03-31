@@ -13,9 +13,7 @@ import { selectDoctor } from '../../../API/chooseDoctor/chooseDoctor.actions';
 import { selectUrgency } from '../../../API/chooseUrgency/chooseUrgency.actions';
 import { getChooseDoctor } from '../../../API/chooseDoctor/chooseDoctor.thunks';
 import { getChooseUrgency } from '../../../API/chooseUrgency/chooseUrgency.thunks';
-import { createVisit } from '../../../API/createVisit/createVisit.thunks';
-
-// import { ageRegExp, dateRegExp } from './regExpValidation';
+import { createVisit } from '../../../API/visits/visits.thunks';
 
 const style={                
   display: 'flex', 
@@ -164,10 +162,9 @@ const CreateVisit = ( {handleClose} ) => {
               </MenuItem>
           ))}
         </TextField>
-
+        {/* propper markup fields for dentist, cardiologist and therapist */}
         {selectedDoctor === "Cardiologist" && 
           <>
-            {/* propper markup fields for dentist, cardiologist and therapist */}
             <TextField
               fullWidth
               id="bloodPressure"

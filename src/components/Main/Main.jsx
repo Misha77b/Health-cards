@@ -1,7 +1,6 @@
-import { Card } from '@mui/material'
 import { useSelector } from 'react-redux'
-import React, { useEffect } from 'react'
-import CardsList from '../CardsList/CardsList'
+import React from 'react'
+import VisitsList from '../VisitsList/VisitsList'
 import PageLogInInfo from '../PageLogInInfo/PageLogInInfo'
 import UseStylesMain from './UseStylesMain'
 
@@ -13,7 +12,7 @@ const Main = () => {
 
   return (
     <div className='main'>
-      {!isAuth ? <PageLogInInfo /> : <CardsList />}
+      {!isAuth ? <PageLogInInfo /> : <VisitsList />}
     </div>
   )
 }

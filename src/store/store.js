@@ -5,7 +5,7 @@ import authReducer from '../API/auth/auth.reducer';
 import errorHandlerReducer from '../API/errorHandler/errorHandler.reducer';
 import chooseDoctorReducer from '../API/chooseDoctor/chooseDoctor.reducer';
 import chooseUrgencyReducer from '../API/chooseUrgency/chooseUrgency.reducer';
-import createVisitReducer from '../API/createVisit/createVisit.reducer';
+import visitsReducer from '../API/visits/visits.reducer';
 
 
 const reduxDevToolsCompose = window['__REDUX_DEVTOOLS_EXTENSION_COMPOSE__'];
@@ -15,7 +15,7 @@ const rootReducer = combineReducers({
   errorHandlerReducer,
   chooseDoctorReducer,
   chooseUrgencyReducer,
-  createVisitReducer,
+  visitsReducer,
 });
 
 const store = configureStore({

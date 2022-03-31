@@ -1,4 +1,4 @@
-import { createVisitRequest } from "./createVisit.actions";
+import { createVisitRequest, getVisitsRequest } from "./visits.actions";
 const token = localStorage.getItem('token');
 
 export const createVisit = (createVisitData) => {
@@ -15,4 +15,17 @@ export const createVisit = (createVisitData) => {
             dispatch(createVisitRequest(createVisit));
         })
     }
-}
+};
+
+export const getVisits = () => {
+    return (dispatch) => {
+        fetch('https://ajax.test-danit.com/api/v2/cards', {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => res.json())
+        .then(visits => {dispatch(getVisitsRequest(visits))})
+    }
+};
