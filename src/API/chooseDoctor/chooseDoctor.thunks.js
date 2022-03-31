@@ -5,9 +5,6 @@ export const getChooseDoctor = () => {
     return (dispatch) => {
         fetch('./chooseDoctor.json')
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            dispatch(setChooseDoctor(api_chooseDoctorParser(data)));
-        })
+        .then(data => {dispatch(setChooseDoctor(api_chooseDoctorParser(data)))})
     }
 }

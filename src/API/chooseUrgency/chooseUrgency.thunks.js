@@ -5,9 +5,6 @@ export const getChooseUrgency = () => {
     return (dispatch) => {
         fetch('./urgency.json')
         .then(res => res.json())
-        .then(data => {
-            console.log(data);
-            dispatch(setChooseUrgency(api_chooseUrgencyParser(data)));
-        })
+        .then(data => {dispatch(setChooseUrgency(api_chooseUrgencyParser(data)))})
     }
 }

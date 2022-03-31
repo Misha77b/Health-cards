@@ -32,24 +32,7 @@ const validationSchema = yup.object({
     .required('Visit purpose is required'),
   visitShortDescription: yup.string()
     .nullable()
-    .required('Is required'),
-  // massBodyIndex: yup.string()
-  //   .nullable()
-  //   .required('MBI is required'),
-  // prevIllnesses: yup.string()
-  //   .nullable()
-  //   .required('Previous illness is required'),
-  // age: yup.string()
-  //   .matches(ageRegExp, "Age is not valid or real")
-  //   .nullable()
-  //   .required('Age is required'),
-  // lastVisitDate: yup.string()
-  //   .matches(dateRegExp, "Date is not valid")
-  //   .nullable()
-  //   .required('Date is required'),
-  // bloodPressure: yup.string()
-  //   .nullable()
-  //   .required('BP is required')
+    .required('Is required')
 });
 
 const CreateVisit = ( {handleClose} ) => {
@@ -92,16 +75,14 @@ const CreateVisit = ( {handleClose} ) => {
         fullName: values.fullName,
         visitPurpose: values.visitPurpose,
         visitShortDescription: values.visitShortDescription,
-        urgency: values.urgency,
-        doctor: values.doctor,
+        urgency: selectedUrgency,
+        doctor: selectedDoctor,
         bloodPressure: values.bloodPressure,
         massBodyIndex: values.massBodyIndex,
         prevIllnesses: values.prevIllnesses,
         age: values.age,
         lastVisitDate: values.lastVisitDate,
       }
-      console.log(createVisitValues.urgency);
-      console.log(createVisitValues.fullName);
       console.log(createVisitValues);
       dispatch(createVisit(createVisitValues));
       handleClose();
