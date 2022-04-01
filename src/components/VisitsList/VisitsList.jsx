@@ -17,13 +17,13 @@ const VisitsList = () => {
   console.log(visits);
     
   return (
-    <>
+    <div>
       {visits.length === 0 ? <h1 style={{margin: '325px auto'}} >No items have been added...</h1> : 
         <VisitCard 
           visits={visits}
         />
       }
-    </>
+    </div>
   )
 }
 
