@@ -17,7 +17,7 @@ const VisitsList = () => {
   console.log(visits);
     
   return (
-    <div>
+    <div style={{width: '100%', display: 'flex', justifyContent: 'space-betwen', flexWrap: 'wrap'}} >
       {visits.length === 0 ? <h1 style={{margin: '325px auto'}} >No items have been added...</h1> : 
         <VisitCard 
           visits={visits}
