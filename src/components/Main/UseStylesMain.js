@@ -5,7 +5,6 @@ const UseStylesMain = makeStyles({
         '.main': {
             display: 'flex', 
             justifyContent: 'space-around',
-            background: '#9b9a9bc2',
         }
     }
 })

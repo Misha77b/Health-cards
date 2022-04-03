@@ -29,6 +29,11 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     dispatch(deleteVisit(id))
   }
 
+  const handleEditRequest = (e) => {
+    const id = e.target.id;
+    dispatch(editVisit(id))
+  };
+
   const formik = useFormik({
     initialValues: {
       fullName: fullName || '',
@@ -48,8 +53,8 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         fullName: values.fullName,
         visitPurpose: values.visitPurpose,
         visitShortDescription: values.visitShortDescription,
-        urgency: selectedUrgency,
-        doctor: selectedDoctor,
+        urgency: values.urgency,
+        doctor: values.doctor,
         bloodPressure: values.bloodPressure,
         massBodyIndex: values.massBodyIndex,
         prevIllnesses: values.prevIllnesses,
@@ -70,7 +75,8 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
           <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               <Button 
-                // onClick={}
+                type='submit'
+                onClick={handleEditRequest}
                 id={id}
                 color='secondary' 
                 variant='contained'
@@ -89,17 +95,17 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
             <TextField
               variant="standard"
               id="fullName"
-              name="fullName"
               label="Full name"
+              name="fullName"
               // disabled={true}
               value={formik.values.fullName}
               onChange={formik.handleChange}
             />
             <TextField
               variant="standard"
-              id='choosenDoctor'
+              id='doctor'
               label='Doctor'
-              name='choosenDoctor'
+              name='doctor'
               value={formik.values.doctor}
               onChange={formik.handleChange}
             />
@@ -156,10 +162,10 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                 <TextField
                   variant="standard"
                   fullWidth
-                  id='massBodyIndex'
-                  label='MBI'
-                  name='massBodyIndex'
-                  value={formik.values.massBodyIndex}
+                  id='prevIllnesses'
+                  label='Previous illnesses'
+                  name='prevIllnesses'
+                  value={formik.values.prevIllnesses}
                   onChange={formik.handleChange}
                 />
                 <TextField

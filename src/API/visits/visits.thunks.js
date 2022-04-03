@@ -31,7 +31,7 @@ export const getVisits = () => {
 };
 
 
-// wordk with edt request
+// wordk with edt request Immediatley!!!!!!!!!!!
 export const editVisit = (id) => {
     return (dispatch) => {
         fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
@@ -40,11 +40,11 @@ export const editVisit = (id) => {
                 "Content-Type": "application/json",
                 Authorization: `Bearer ${token}`
             },
-            body: JSON.stringify(body),
+            body: JSON.stringify(visit),
         }).then(res => res.json())
-        .then(visit => dispatch(editVisitRequest(visit)))
+        .then(visit => {dispatch(editVisitRequest(visit))})
     }
-}
+};
 
 export const deleteVisit = (id) => {
     return (dispatch) => {
@@ -58,4 +58,4 @@ export const deleteVisit = (id) => {
             dispatch(deleteVisitRequest(id))
         })
     }
-}
+};
