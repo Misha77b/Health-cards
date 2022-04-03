@@ -1,8 +1,10 @@
-import { CREATE_VISIT_REQUEST, GET_VISITS_REQUEST } from "./visits.actions";
+import { CREATE_VISIT_REQUEST, GET_VISITS_REQUEST, EDIT_VISIT_REQUEST, DELETE_VISIT_REQUEST } from "./visits.actions";
 
 const initState = {
     createVisitRequest: {},
     visits: [],
+    editVisitRequest: null,
+    deleteVisitRequest: null,
 }
 
 const visitsReducer = (state = initState, action) => {
@@ -18,6 +20,20 @@ const visitsReducer = (state = initState, action) => {
             return {
                 ...state,
                 visits: action.payload,
+            }
+        }
+
+        case EDIT_VISIT_REQUEST: {
+            return{
+                ...state,
+                editVisitRequest: action.payload
+            }
+        }
+
+        case DELETE_VISIT_REQUEST: {
+            return {
+                ...state,
+                deleteVisitRequest: action.payload,
             }
         }
 

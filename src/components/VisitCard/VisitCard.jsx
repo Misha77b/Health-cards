@@ -21,7 +21,7 @@ const VisitCard = ({ visits }) => {
   return (
     <>
       {visits.map((visit) => {
-        return <div style={{margin: '20px 50px'}} key={visit.id}> 
+        return <div key={visit.id}> 
           <Accordion 
             fullName={visit.fullName}
             visitPurpose={visit.visitPurpose}
@@ -35,11 +35,6 @@ const VisitCard = ({ visits }) => {
             lastVisitDate={visit.lastVisitDate}
             id={visit.id}
           />
-          {visit.doctor === 'Cardiologist'}
-
-          {visit.doctor === 'Therapist'}
-          
-          {visit.doctor === 'Dentist'}
         </div>
       })}
     </>

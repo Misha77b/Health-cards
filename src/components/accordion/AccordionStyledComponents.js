@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const AccordionSection = styled.div`
+  margin: 20px 50px;
   display: flex;
   flex-direction: column;
   align-items: flex-start;

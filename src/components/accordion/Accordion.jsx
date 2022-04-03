@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
@@ -8,19 +9,25 @@ import { useFormik } from 'formik';
 import { validationSchema } from './ValidationSchema';
 import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
-import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents'
+import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents';
+import { deleteVisit, editVisit } from '../../API/visits/visits.thunks'
 
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
+  const dispatch = useDispatch();
   const [clicked, setClicked] = useState(false);
 
   const accordionToggle = () => {
     if (clicked) {
-      //if clicked question is already active, then close it
       return setClicked(null);
     }
     setClicked(true);
   };
+
+  const handleVisitDelete = (e) => {
+    const id = e.target.id;
+    dispatch(deleteVisit(id))
+  }
 
   const formik = useFormik({
     initialValues: {
@@ -36,33 +43,48 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
       lastVisitDate: lastVisitDate || '',
     },
     validationSchema: validationSchema,
-    // onSubmit: (values) => {
-    //   const editVisitValues = {
-    //     fullName: values.fullName,
-    //     visitPurpose: values.visitPurpose,
-    //     visitShortDescription: values.visitShortDescription,
-    //     urgency: selectedUrgency,
-    //     doctor: selectedDoctor,
-    //     bloodPressure: values.bloodPressure,
-    //     massBodyIndex: values.massBodyIndex,
-    //     prevIllnesses: values.prevIllnesses,
-    //     age: values.age,
-    //     lastVisitDate: values.lastVisitDate,
-    //   }
-    //   dispatch(createVisit(editVisitValues));
-    // },
+    onSubmit: (values) => {
+      const editVisitValues = {
+        fullName: values.fullName,
+        visitPurpose: values.visitPurpose,
+        visitShortDescription: values.visitShortDescription,
+        urgency: selectedUrgency,
+        doctor: selectedDoctor,
+        bloodPressure: values.bloodPressure,
+        massBodyIndex: values.massBodyIndex,
+        prevIllnesses: values.prevIllnesses,
+        age: values.age,
+        lastVisitDate: values.lastVisitDate,
+      }
+      console.log(editVisitValues);
+      dispatch(editVisit(editVisitValues));
+    },
   });
 
   return (
-    <AccordionSection>
+    <AccordionSection key={id} id={id}>
       <Container>
         <form
           onSubmit={formik.handleSubmit}
         >
-          <Wrap onClick={() => accordionToggle()}>
+          <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <Button>Edit</Button>
-              <Button>Delete</Button>
+              <Button 
+                // onClick={}
+                id={id}
+                color='secondary' 
+                variant='contained'
+              >
+                Edit
+              </Button>
+              <Button 
+                onClick={handleVisitDelete}
+                id={id}
+                color='error' 
+                variant='contained'
+              >
+                Delete
+              </Button>
             </div>
             <TextField
               variant="standard"
@@ -81,7 +103,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               value={formik.values.doctor}
               onChange={formik.handleChange}
             />
-            <span>{clicked ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}</span>
+            <span onClick={() => accordionToggle()}>{clicked ? <ArrowUpwardIcon /> : <ArrowDownwardIcon />}</span>
           </Wrap>
           {clicked ? (
             <Dropdown>

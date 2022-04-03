@@ -9,3 +9,15 @@ export const getVisitsRequest = (data) => ({
     type: GET_VISITS_REQUEST,
     payload: data
 });
+
+export const EDIT_VISIT_REQUEST = 'EDIT_VISIT_REQUEST';
+export const editVisitRequest = (data) => ({
+    type: EDIT_VISIT_REQUEST,
+    payload: data
+})
+
+export const DELETE_VISIT_REQUEST = 'DELETE_VISIT_REQUEST';
+export const deleteVisitRequest = (data) => ({
+    type: DELETE_VISIT_REQUEST,
+    payload: data
+})
