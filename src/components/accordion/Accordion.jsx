@@ -2,19 +2,19 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
+import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import { useFormik } from 'formik';
 import { validationSchema } from './ValidationSchema';
-import Button from '@mui/material/Button';
 import TextField from '@mui/material//TextField';
-import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents';
+import Button from '@mui/material/Button';
 import { deleteVisit, editVisit } from '../../API/visits/visits.thunks'
-
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
   const dispatch = useDispatch();
+
   const [clicked, setClicked] = useState(false);
 
   const accordionToggle = () => {
@@ -97,7 +97,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               id="fullName"
               label="Full name"
               name="fullName"
-              // disabled={true}
+              disabled
               value={formik.values.fullName}
               onChange={formik.handleChange}
             />
@@ -106,6 +106,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               id='doctor'
               label='Doctor'
               name='doctor'
+              disabled
               value={formik.values.doctor}
               onChange={formik.handleChange}
             />

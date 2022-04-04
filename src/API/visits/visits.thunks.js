@@ -32,8 +32,9 @@ export const getVisits = () => {
 
 
 // wordk with edt request Immediatley!!!!!!!!!!!
-export const editVisit = (id) => {
+export const editVisit = (id, visit) => {
     return (dispatch) => {
+        dispatch(editVisitRequest(id))
         fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
             method: "PUT",
             headers: {

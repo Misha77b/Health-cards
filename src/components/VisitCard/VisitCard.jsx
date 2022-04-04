@@ -4,8 +4,6 @@ import Accordion from '../accordion/Accordion';
 
 const VisitCard = ({ visits }) => {
 
-  // const [edit, setEdit] = useState(false);
-
   console.log(visits);
   return (
     <>

@@ -12,6 +12,13 @@ export const AccordionSection = styled.div`
   padding: 20px;
   width: 300px;
   gap: 10px
+  color: black;
+  .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
+    color: black;
+  }
+  .css-1x51dt5-MuiInputBase-input-MuiInput-input.Mui-disabled {
+    -webkit-text-fill-color: black;
+  }
 `;
 
 export const Container = styled.div`
