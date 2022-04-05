@@ -16,6 +16,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
   const dispatch = useDispatch();
 
   const [clicked, setClicked] = useState(false);
+  const [disabled, setDisabled] = useState(true)
 
   const accordionToggle = () => {
     if (clicked) {
@@ -26,12 +27,15 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
 
   const handleVisitDelete = (e) => {
     const id = e.target.id;
-    dispatch(deleteVisit(id))
+    dispatch(deleteVisit(id));
   }
 
   const handleEditRequest = (e) => {
     const id = e.target.id;
-    dispatch(editVisit(id))
+    console.log(id);
+
+    setDisabled(false);
+    // dispatch(editVisit(id))
   };
 
   const formik = useFormik({
@@ -74,15 +78,23 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         >
           <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              <Button 
-                type='submit'
+              {disabled ? <Button
                 onClick={handleEditRequest}
                 id={id}
                 color='secondary' 
                 variant='contained'
-              >
-                Edit
-              </Button>
+                >
+                  Edit
+                </Button> : 
+                <Button 
+                type='submit'
+                id={id}
+                color='secondary' 
+                variant='contained'
+                >
+                  Save
+                </Button>
+              }
               <Button 
                 onClick={handleVisitDelete}
                 id={id}
@@ -93,20 +105,20 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               </Button>
             </div>
             <TextField
+              disabled={disabled}
               variant="standard"
               id="fullName"
               label="Full name"
               name="fullName"
-              disabled
               value={formik.values.fullName}
               onChange={formik.handleChange}
             />
             <TextField
+              disabled={disabled}
               variant="standard"
               id='doctor'
               label='Doctor'
               name='doctor'
-              disabled
               value={formik.values.doctor}
               onChange={formik.handleChange}
             />
@@ -116,6 +128,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
             <Dropdown>
               {doctor === 'Cardiologist' && <>
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitPurpose'
@@ -125,6 +138,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField  
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitShortDescription'
@@ -134,6 +148,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='urgency'
@@ -143,6 +158,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='bloodPressure'
@@ -152,6 +168,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='massBodyIndex'
@@ -161,6 +178,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='prevIllnesses'
@@ -170,6 +188,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='age'
@@ -182,6 +201,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
 
               {doctor === 'Dentist' && <>
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitPurpose'
@@ -191,6 +211,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField  
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitShortDescription'
@@ -200,6 +221,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='urgency'
@@ -209,6 +231,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='lastVisitDate'
@@ -221,6 +244,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
 
               {doctor === 'Therapist' && <>
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitPurpose'
@@ -230,6 +254,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField  
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='visitShortDescription'
@@ -239,6 +264,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='urgency'
@@ -248,6 +274,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   onChange={formik.handleChange}
                 />
                 <TextField
+                  disabled={disabled}
                   variant="standard"
                   fullWidth
                   id='age'

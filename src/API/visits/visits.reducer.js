@@ -10,19 +10,21 @@ const initState = {
 
 const visitsReducer = (state = initState, action) => {
     switch(action.type) {
-        case CREATE_VISIT_REQUEST: {
-            return {
-                ...state,
-                createVisitRequest: action.payload,
-            }
-        }
-
         case GET_VISITS_REQUEST: {
             return {
                 ...state,
                 visits: action.payload,
             }
         }
+
+        case CREATE_VISIT_REQUEST: {
+            return {
+                ...state,
+                createVisitRequest: action.payload,
+                visits: [...state.visits, action.payload]
+            }
+        }
+
 
         case EDIT_VISIT_REQUEST: {
             return{
