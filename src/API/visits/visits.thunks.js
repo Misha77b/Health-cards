@@ -1,4 +1,5 @@
 import { createVisitRequest, getVisitsRequest, editVisitRequest, deleteVisitRequest } from "./visits.actions";
+import { setError } from "../errorHandler/errorHandler.actions";
 const token = localStorage.getItem('token');
 
 export const createVisit = (createVisitData) => {
@@ -13,6 +14,8 @@ export const createVisit = (createVisitData) => {
         }).then(res => res.json())
         .then(createVisit => {
             dispatch(createVisitRequest(createVisit));
+        }).catch(err => {
+            dispatch(setError(err))
         })
     }
 };
@@ -27,6 +30,9 @@ export const getVisits = () => {
             }
         }).then(res => res.json())
         .then(visits => {dispatch(getVisitsRequest(visits))})
+        .catch(err => {
+            dispatch(setError(err))
+        })
     }
 };
 
@@ -44,6 +50,9 @@ export const editVisit = (id, visit) => {
             body: JSON.stringify(visit),
         }).then(res => res.json())
         .then(visit => {dispatch(editVisitRequest(visit))})
+        .catch(err => {
+            dispatch(setError(err))
+        })
     }
 };
 
@@ -57,6 +66,8 @@ export const deleteVisit = (id) => {
             }
         }).then(() => {
             dispatch(deleteVisitRequest(id))
+        }).catch(err => {
+            dispatch(setError(err))
         })
     }
 };

@@ -2,10 +2,10 @@ import { CREATE_VISIT_REQUEST, GET_VISITS_REQUEST, EDIT_VISIT_REQUEST, EDIT_VISI
 
 const initState = {
     createVisitRequest: {},
-    visits: [],
     editVisitRequest: null,
     // editVisitSuccess: null,
     deleteVisitRequest: null,
+    visits: [],
 }
 
 const visitsReducer = (state = initState, action) => {
@@ -25,7 +25,6 @@ const visitsReducer = (state = initState, action) => {
             }
         }
 
-
         case EDIT_VISIT_REQUEST: {
             return{
                 ...state,
@@ -44,6 +43,7 @@ const visitsReducer = (state = initState, action) => {
             return {
                 ...state,
                 deleteVisitRequest: action.payload,
+                visits: state.visits.filter(visit => {visit !== action.payload})
             }
         }
 
