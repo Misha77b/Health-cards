@@ -1,4 +1,4 @@
-import { createVisitRequest, getVisitsRequest, editVisitRequest, deleteVisitRequest } from "./visits.actions";
+import { createVisitRequest, getVisitsRequest, updateVisitRequest, deleteVisitRequest } from "./visits.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
 const token = localStorage.getItem('token');
 
@@ -38,9 +38,9 @@ export const getVisits = () => {
 
 
 // wordk with edt request Immediatley!!!!!!!!!!!
-export const editVisit = (id, visit) => {
+export const updateVisit = ({id, visit}) => {
     return (dispatch) => {
-        dispatch(editVisitRequest(id))
+        // dispatch(updateVisitRequest(id))
         fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
             method: "PUT",
             headers: {
@@ -49,7 +49,7 @@ export const editVisit = (id, visit) => {
             },
             body: JSON.stringify(visit),
         }).then(res => res.json())
-        .then(visit => {dispatch(editVisitRequest(visit))})
+        .then(visit => {dispatch(updateVisitRequest(visit))})
         .catch(err => {
             dispatch(setError(err))
         })

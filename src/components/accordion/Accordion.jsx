@@ -10,13 +10,14 @@ import { useFormik } from 'formik';
 import { validationSchema } from './ValidationSchema';
 import TextField from '@mui/material//TextField';
 import Button from '@mui/material/Button';
-import { deleteVisit, editVisit } from '../../API/visits/visits.thunks'
+import { deleteVisit, updateVisit } from '../../API/visits/visits.thunks'
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
   const dispatch = useDispatch();
 
   const [clicked, setClicked] = useState(false);
-  const [disabled, setDisabled] = useState(true)
+  const [disabled, setDisabled] = useState(true);
+  const [visitEditing, setVisitEditind] = useState(false);
 
   const accordionToggle = () => {
     if (clicked) {
@@ -34,8 +35,8 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     const id = e.target.id;
     console.log(id);
 
+    dispatch(updateVisit(id))
     setDisabled(false);
-    // dispatch(editVisit(id))
   };
 
   const formik = useFormik({
@@ -66,7 +67,8 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         lastVisitDate: values.lastVisitDate,
       }
       console.log(editVisitValues);
-      dispatch(editVisit(editVisitValues));
+      dispatch(updateVisit(editVisitValues));
+      setDisabled(true);
     },
   });
 
@@ -79,18 +81,18 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
           <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
               {disabled ? <Button
-                onClick={handleEditRequest}
-                id={id}
-                color='secondary' 
-                variant='contained'
+                  onClick={handleEditRequest}
+                  id={id}
+                  color='secondary' 
+                  variant='contained'
                 >
                   Edit
                 </Button> : 
                 <Button 
-                type='submit'
-                id={id}
-                color='secondary' 
-                variant='contained'
+                  type='submit'
+                  id={id}
+                  color='secondary' 
+                  variant='contained'
                 >
                   Save
                 </Button>
