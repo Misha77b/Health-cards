@@ -3,6 +3,7 @@ import { useSelector } from 'react-redux';
 import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
+import DialogContent from '@mui/material/DialogContent';
 import CloseIcon from '@mui/icons-material/Close';
 import LogIn from './LogIn/LogIn';
 import PropTypes from 'prop-types';
@@ -14,10 +15,12 @@ const style = {
   left: '50%',
   transform: 'translate(-50%, -50%)',
   width: 400,
+  maxHeight: '90%',
   bgcolor: 'background.paper',
   border: '1px solid #c9c9c9',
   borderRadius: '10px',
   p: 4,
+  overflowX: 'hidden',
 };
 
 const Modals = ({open, handleClose}) => {
@@ -37,9 +40,10 @@ const Modals = ({open, handleClose}) => {
         open={open}
         onClose={handleClose}
         aria-labelledby="modal-modal-title"
-        aria-describedby="modal-modal-description"
+        aria-describedby="modal-modal-description"        
+        
       >
-        <Box sx={style}>
+        <DialogContent scroll='body' sx={style}>
           <Button 
               onClick={handleClose}
               disableRipple={true}
@@ -62,7 +66,7 @@ const Modals = ({open, handleClose}) => {
               />
             }
           </div>
-        </Box>
+        </DialogContent>
       </Modal>
     </div>
   );

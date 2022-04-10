@@ -10,6 +10,12 @@ export const getVisitsRequest = (data) => ({
     payload: data
 });
 
+export const GET_VISIT_REQUEST = 'GET_VISIT_REQUEST';
+export const getVisitRequest = (data) => ({
+    type: GET_VISIT_REQUEST,
+    payload: data
+});
+
 export const UPDATE_VISIT_REQUEST = 'UPDATE_VISIT_REQUEST';
 export const updateVisitRequest = (data) => ({
     type: UPDATE_VISIT_REQUEST,

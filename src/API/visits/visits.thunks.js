@@ -1,4 +1,4 @@
-import { createVisitRequest, getVisitsRequest, updateVisitRequest, deleteVisitRequest } from "./visits.actions";
+import { createVisitRequest, getVisitsRequest, getVisitRequest, deleteVisitRequest, updateVisitSuccess } from "./visits.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
 const token = localStorage.getItem('token');
 
@@ -36,12 +36,30 @@ export const getVisits = () => {
     }
 };
 
+export const getVisit = (id) => {
+    return (dispatch) => {
+        fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
+            method: 'GET',
+            headers: {
+                "Content-Type": "application/json",
+                Authorization: `Bearer ${token}`
+            }
+        }).then(res => res.json())
+        .then(visit => {dispatch(getVisitRequest(visit.id))})
+        .catch(err => {
+            dispatch(setError(err))
+        })
+    }
+};
+
 
 // wordk with edt request Immediatley!!!!!!!!!!!
-export const updateVisit = ({id, visit}) => {
+
+// Think MORE AND FASTER AND HARDER!!!!!!!!!!!!!!!
+export const updateVisit = (visit) => {
     return (dispatch) => {
         // dispatch(updateVisitRequest(id))
-        fetch(`https://ajax.test-danit.com/api/v2/cards/${id}`, {
+        fetch(`https://ajax.test-danit.com/api/v2/cards/${visit.id}`, {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
@@ -49,7 +67,7 @@ export const updateVisit = ({id, visit}) => {
             },
             body: JSON.stringify(visit),
         }).then(res => res.json())
-        .then(visit => {dispatch(updateVisitRequest(visit))})
+        .then(visit => {dispatch(updateVisitSuccess(visit))})
         .catch(err => {
             dispatch(setError(err))
         })

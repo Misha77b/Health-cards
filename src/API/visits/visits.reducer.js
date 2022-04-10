@@ -2,12 +2,14 @@ import { CREATE_VISIT_REQUEST,
     GET_VISITS_REQUEST, 
     UPDATE_VISIT_REQUEST, 
     UPDATE_VISIT_SUCCESS, 
-    DELETE_VISIT_REQUEST 
+    DELETE_VISIT_REQUEST, 
+    GET_VISIT_REQUEST
 } from "./visits.actions";
 
 const initState = {
+    // isFetching: false,
     createVisitRequest: {},
-    editVisitStarted: null,
+    editVisitId: null,
     updateVisitRequest: null,
     visits: [],
     deleteVisitRequest: null,
@@ -23,6 +25,14 @@ const visitsReducer = (state = initState, action) => {
             }
         }
 
+        case GET_VISIT_REQUEST: {
+            console.log(action.payload);
+            return {
+                ...state,
+                editVisitId: action.payload
+            }
+        }
+
         case CREATE_VISIT_REQUEST: {
             return {
                 ...state,
@@ -34,7 +44,7 @@ const visitsReducer = (state = initState, action) => {
         case UPDATE_VISIT_REQUEST: {
             return{
                 ...state,
-                editVisitStarted: action.payload
+                editVisitId: action.payload
             }
         }
 
@@ -48,7 +58,7 @@ const visitsReducer = (state = initState, action) => {
             return {
                 ...state, 
                 visits: updatedVisit,
-                editVisitStarted: null
+                editVisitId: null
             }
         }
 

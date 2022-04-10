@@ -1,5 +1,5 @@
-import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
+import React, { useEffect, useState } from 'react';
+import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
 import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents';
@@ -10,14 +10,20 @@ import { useFormik } from 'formik';
 import { validationSchema } from './ValidationSchema';
 import TextField from '@mui/material//TextField';
 import Button from '@mui/material/Button';
-import { deleteVisit, updateVisit } from '../../API/visits/visits.thunks'
+import { deleteVisit, updateVisit, getVisit } from '../../API/visits/visits.thunks';
+import { getVisitRequest } from '../../API/visits/visits.actions';
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
   const dispatch = useDispatch();
 
+
+  const visitToEditId = useSelector((state) => state.visitsReducer.editVisitId);
+  const visitToEditState = useSelector((state) => state.visitsReducer.updateVisitRequest);
+
   const [clicked, setClicked] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [visitEditing, setVisitEditind] = useState(false);
+  const [visitToEdit, setVisitToEdit] = useState(null);
+  // const [btnType, setBtnType] = useState('button');
 
   const accordionToggle = () => {
     if (clicked) {
@@ -25,6 +31,10 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     }
     setClicked(true);
   };
+
+  // useEffect(() => {
+
+  // }, [])
 
   const handleVisitDelete = (e) => {
     const id = e.target.id;
@@ -35,8 +45,10 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     const id = e.target.id;
     console.log(id);
 
-    dispatch(updateVisit(id))
-    setDisabled(false);
+    dispatch(getVisit(id));
+    // setVisitToEdit(id, editVisitValues)
+    setDisabled(!disabled);
+    // setBtnType('submit')
   };
 
   const formik = useFormik({
@@ -51,6 +63,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
       prevIllnesses: prevIllnesses || '',
       age: age || '',
       lastVisitDate: lastVisitDate || '',
+      id: id,
     },
     validationSchema: validationSchema,
     onSubmit: (values) => {
@@ -65,10 +78,12 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         prevIllnesses: values.prevIllnesses,
         age: values.age,
         lastVisitDate: values.lastVisitDate,
+        id: values.id
       }
-      console.log(editVisitValues);
+      // console.log(editVisitValues);
       dispatch(updateVisit(editVisitValues));
-      setDisabled(true);
+      setDisabled(!disabled);
+      // setBtnType('button');
     },
   });
 
