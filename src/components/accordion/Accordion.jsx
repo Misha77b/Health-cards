@@ -11,7 +11,6 @@ import { validationSchema } from './ValidationSchema';
 import TextField from '@mui/material//TextField';
 import Button from '@mui/material/Button';
 import { deleteVisit, updateVisit, getVisit } from '../../API/visits/visits.thunks';
-import { getVisitRequest } from '../../API/visits/visits.actions';
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
   const dispatch = useDispatch();
@@ -22,8 +21,9 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
 
   const [clicked, setClicked] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  const [visitToEdit, setVisitToEdit] = useState(null);
-  // const [btnType, setBtnType] = useState('button');
+  // const [visitToEdit, setVisitToEdit] = useState(null);
+  const [editBtnRendering, setEditBtnRendering] = useState('block');
+  const [saveBtnRendering, setSaveBtnRendering] = useState('none');
 
   const accordionToggle = () => {
     if (clicked) {
@@ -31,10 +31,6 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     }
     setClicked(true);
   };
-
-  // useEffect(() => {
-
-  // }, [])
 
   const handleVisitDelete = (e) => {
     const id = e.target.id;
@@ -46,9 +42,9 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
     console.log(id);
 
     dispatch(getVisit(id));
-    // setVisitToEdit(id, editVisitValues)
     setDisabled(!disabled);
-    // setBtnType('submit')
+    setEditBtnRendering('none');
+    setSaveBtnRendering('block');
   };
 
   const formik = useFormik({
@@ -80,10 +76,11 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         lastVisitDate: values.lastVisitDate,
         id: values.id
       }
-      // console.log(editVisitValues);
+      console.log(editVisitValues);
       dispatch(updateVisit(editVisitValues));
       setDisabled(!disabled);
-      // setBtnType('button');
+      setEditBtnRendering('block');
+      setSaveBtnRendering('none');
     },
   });
 
@@ -95,15 +92,19 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         >
           <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              {disabled ? <Button
+              {/* {disabled ?  */}
+              <Button
+                  sx={{display: `${editBtnRendering}`}}
                   onClick={handleEditRequest}
                   id={id}
                   color='secondary' 
                   variant='contained'
                 >
                   Edit
-                </Button> : 
+                </Button> 
+                {/* :  */}
                 <Button 
+                  sx={{display: `${saveBtnRendering}`}}
                   type='submit'
                   id={id}
                   color='secondary' 
@@ -111,7 +112,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                 >
                   Save
                 </Button>
-              }
+              {/* } */}
               <Button 
                 onClick={handleVisitDelete}
                 id={id}
