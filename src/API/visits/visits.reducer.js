@@ -1,4 +1,6 @@
-import { CREATE_VISIT_REQUEST, 
+import { 
+    CREATE_VISIT_REQUEST,
+    SET_IS_LOADING, 
     GET_VISITS_REQUEST, 
     UPDATE_VISIT_REQUEST, 
     UPDATE_VISIT_SUCCESS, 
@@ -8,7 +10,7 @@ import { CREATE_VISIT_REQUEST,
 
 const initState = {
     // isFetching: false,
-    // loader: false,
+    isLoading: false,
     createVisitRequest: {},
     editVisitId: null,
     updateVisitRequest: null,
@@ -18,6 +20,13 @@ const initState = {
 
 const visitsReducer = (state = initState, action) => {
     switch(action.type) {
+
+        case SET_IS_LOADING: {
+            return {
+                ...state,
+                isLoading: action.payload,
+            }
+        }
 
         case GET_VISITS_REQUEST: {
             return {

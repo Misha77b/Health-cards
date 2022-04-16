@@ -4,6 +4,12 @@ export const createVisitRequest = (data) => ({
     payload: data
 });
 
+export const SET_IS_LOADING = 'SET_IS_LOADING';
+export const setIsLoading = (data) => ({
+    type: SET_IS_LOADING,
+    payload: 'data'
+})
+
 export const GET_VISITS_REQUEST = 'GET_VISITS_REQUEST';
 export const getVisitsRequest = (data) => ({
     type: GET_VISITS_REQUEST,

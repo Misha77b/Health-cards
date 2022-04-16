@@ -3,7 +3,6 @@ import { useSelector } from 'react-redux';
 import VisitsList from '../VisitsList/VisitsList';
 import PageLogInInfo from '../PageLogInInfo/PageLogInInfo';
 import UseStylesMain from './UseStylesMain';
-// import Preloader from '../Preloader/Preloader';
 
 const Main = () => {
   UseStylesMain()
@@ -14,7 +13,6 @@ const Main = () => {
   return (
     <div className='main'>
       {!isAuth ? <PageLogInInfo /> : <VisitsList />}
-      {/* <Preloader /> */}
     </div>
   )
 }

@@ -9,7 +9,8 @@ const useStylesPreloader = makeStyles({
             'alingItem' : 'center',
             'background' : 'rgba(0, 0, 0, .5)',
             'width' : '100%',
-            'height' : '100%'
+            'height' : '100%',
+            'zIndex' : '10'
         },
         '@keyframes heartBeat': {
             '0%': {
@@ -26,8 +27,8 @@ const useStylesPreloader = makeStyles({
         },
         '.preloader-img' : {
             'margin' : 'auto',
-            'width' : '250px',
-            'height' : '250px',
+            'width' : '275px',
+            'height' : '275px',
             'animation' : 'heartBeat 1s infinite'
         },
     }

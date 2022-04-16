@@ -1,4 +1,11 @@
-import { createVisitRequest, getVisitsRequest, getVisitRequest, deleteVisitRequest, updateVisitSuccess } from "./visits.actions";
+import { 
+    createVisitRequest, 
+    getVisitsRequest, 
+    getVisitRequest, 
+    deleteVisitRequest, 
+    updateVisitSuccess, 
+    setIsLoading 
+} from "./visits.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
 
 export const createVisit = (createVisitData) => {
@@ -12,9 +19,11 @@ export const createVisit = (createVisitData) => {
             body: JSON.stringify(createVisitData),
         }).then(res => res.json())
         .then(createVisit => {
+            dispatch(setIsLoading(true));
             dispatch(createVisitRequest(createVisit));
         }).catch(err => {
-            dispatch(setError(err))
+            dispatch(setIsLoading(false));
+            dispatch(setError(err));
         })
     }
 };
@@ -28,9 +37,13 @@ export const getVisits = () => {
                 Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => res.json())
-        .then(visits => {dispatch(getVisitsRequest(visits))})
+        .then(visits => {
+            dispatch(setIsLoading(true));
+            dispatch(getVisitsRequest(visits));
+        })
         .catch(err => {
-            dispatch(setError(err))
+            dispatch(setIsLoading(false));
+            dispatch(setError(err));
         })
     }
 };
@@ -51,13 +64,8 @@ export const getVisit = (id) => {
     }
 };
 
-
-// wordk with edt request Immediatley!!!!!!!!!!!
-
-// Think MORE AND FASTER AND HARDER!!!!!!!!!!!!!!!
 export const updateVisit = (visit) => {
     return (dispatch) => {
-        // dispatch(updateVisitRequest(id))
         fetch(`https://ajax.test-danit.com/api/v2/cards/${visit.id}`, {
             method: "PUT",
             headers: {
