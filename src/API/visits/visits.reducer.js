@@ -8,6 +8,7 @@ import { CREATE_VISIT_REQUEST,
 
 const initState = {
     // isFetching: false,
+    // loader: false,
     createVisitRequest: {},
     editVisitId: null,
     updateVisitRequest: null,

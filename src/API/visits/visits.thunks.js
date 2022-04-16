@@ -1,6 +1,5 @@
 import { createVisitRequest, getVisitsRequest, getVisitRequest, deleteVisitRequest, updateVisitSuccess } from "./visits.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
-const token = localStorage.getItem('token');
 
 export const createVisit = (createVisitData) => {
     return (dispatch) => {
@@ -8,7 +7,7 @@ export const createVisit = (createVisitData) => {
             method: 'POST',
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(createVisitData),
         }).then(res => res.json())
@@ -26,7 +25,7 @@ export const getVisits = () => {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => res.json())
         .then(visits => {dispatch(getVisitsRequest(visits))})
@@ -42,7 +41,7 @@ export const getVisit = (id) => {
             method: 'GET',
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(res => res.json())
         .then(visit => {dispatch(getVisitRequest(visit.id))})
@@ -63,7 +62,7 @@ export const updateVisit = (visit) => {
             method: "PUT",
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             },
             body: JSON.stringify(visit),
         }).then(res => res.json())
@@ -80,7 +79,7 @@ export const deleteVisit = (id) => {
             method: 'DELETE',
             headers: {
                 "Content-Type": "application/json",
-                Authorization: `Bearer ${token}`
+                Authorization: `Bearer ${localStorage.getItem('token')}`
             }
         }).then(() => {
             dispatch(deleteVisitRequest(id))
