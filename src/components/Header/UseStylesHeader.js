@@ -16,7 +16,8 @@ const UseStylesHeader = makeStyles({
             margin: '0 50px',
         },
         '.header-logo-title' : {
-            margin: '10px 15px',
+            margin: '10px 15px',                   
+            fontFamily: 'Roboto sans-serif',
             fontSize: '24px',
             fontWeight: '700',
             color: 'gold',

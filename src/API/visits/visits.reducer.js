@@ -9,7 +9,6 @@ import {
 } from "./visits.actions";
 
 const initState = {
-    // isFetching: false,
     isLoading: false,
     createVisitRequest: {},
     editVisitId: null,
