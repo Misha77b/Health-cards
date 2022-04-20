@@ -13,6 +13,7 @@ export const AccordionSection = styled.div`
   width: 300px;
   gap: 10px
   color: black;
+  box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
   .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
     color: black;
   }

@@ -1,5 +1,5 @@
 import React from 'react';
-import TextField from '@mui/material//TextField';
+// import TextField from '@mui/material//TextField';
 
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
@@ -24,7 +24,14 @@ const CardFilter = () => {
     
     <Paper
       component="form"
-      sx={{ marginTop: '20px', p: '2px 4px', display: 'flex', alignItems: 'center', width: '50vw' }}
+      sx={{ 
+        marginTop: '20px', 
+        p: '2px 4px', 
+        display: 'flex', 
+        alignItems: 'center', 
+        width: '50vw',
+        boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px'
+      }}
     >
       <InputBase
         sx={{ ml: 1, flex: 1 }}
