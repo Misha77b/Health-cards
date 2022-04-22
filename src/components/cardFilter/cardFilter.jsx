@@ -1,4 +1,5 @@
-import React from 'react';
+import React, { useState } from 'react';
+import { useDispatch } from 'react-redux';
 // import TextField from '@mui/material//TextField';
 
 import Paper from '@mui/material/Paper';
@@ -7,10 +8,21 @@ import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
+import { searchFilter } from '../../API/visits/visits.actions';
 import UseStylesCardFilter from './useStylesCardFilter';
 
 const CardFilter = () => {
   UseStylesCardFilter();
+  const dispatch = useDispatch()
+
+  const [inputValue, setInputValue] = useState('');
+  
+  const onSearchFilter = (e) => {
+    console.log(e.target.value);
+    // setInputValue(e.targte.value)
+    console.log(dispatch(searchFilter(e.target.value)));
+    dispatch(searchFilter(e.target.value));
+  }
 
   return (
     // <div className='filter-wrapper'>
@@ -36,7 +48,7 @@ const CardFilter = () => {
       <InputBase
         sx={{ ml: 1, flex: 1 }}
         placeholder="Search..."
-        inputProps={{ 'aria-label': 'search' }}
+        onChange={onSearchFilter}
       />
       <Divider sx={{ height: 28, m: 0.5 }} orientation="vertical" />
       <IconButton sx={{ p: '10px' }} aria-label="search">

@@ -5,7 +5,8 @@ import {
     UPDATE_VISIT_REQUEST, 
     UPDATE_VISIT_SUCCESS, 
     DELETE_VISIT_REQUEST, 
-    GET_VISIT_REQUEST
+    GET_VISIT_REQUEST,
+    SEARCH_FILTER
 } from "./visits.actions";
 
 const initState = {
@@ -15,6 +16,7 @@ const initState = {
     updateVisitRequest: null,
     visits: [],
     deleteVisitRequest: null,
+    searchValue: '',
 }
 
 const visitsReducer = (state = initState, action) => {
@@ -39,6 +41,13 @@ const visitsReducer = (state = initState, action) => {
             return {
                 ...state,
                 editVisitId: action.payload
+            }
+        }
+
+        case SEARCH_FILTER: {
+            return {
+                ...state,
+                searchValue: action.payload,
             }
         }
 

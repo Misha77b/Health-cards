@@ -22,6 +22,12 @@ export const getVisitRequest = (data) => ({
     payload: data
 });
 
+export const SEARCH_FILTER = 'SEARCH_FILTER';
+export const searchFilter = (data) => ({
+    type: SEARCH_FILTER,
+    payload: data
+})
+
 export const UPDATE_VISIT_REQUEST = 'UPDATE_VISIT_REQUEST';
 export const updateVisitRequest = (data) => ({
     type: UPDATE_VISIT_REQUEST,
