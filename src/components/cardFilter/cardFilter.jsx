@@ -14,12 +14,9 @@ import UseStylesCardFilter from './useStylesCardFilter';
 const CardFilter = () => {
   UseStylesCardFilter();
   const dispatch = useDispatch()
-
-  const [inputValue, setInputValue] = useState('');
   
   const onSearchFilter = (e) => {
     console.log(e.target.value);
-    // setInputValue(e.targte.value)
     console.log(dispatch(searchFilter(e.target.value)));
     dispatch(searchFilter(e.target.value));
   }

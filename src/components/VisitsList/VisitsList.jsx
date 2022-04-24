@@ -10,11 +10,11 @@ import CardFilter from '../cardFilter/CardFilter';
 
 const VisitsList = () => {
   
-  const dispatch = useDispatch()
+  const dispatch = useDispatch();
 
   const visits = useSelector((state) => state.visitsReducer.visits);
   const isLoading = useSelector(state => state.visitsReducer.isLoading);
-  const searchFilter = useSelector(state => state.visitsReducer.searchValue)
+  const searchFilter = useSelector(state => state.visitsReducer.searchValue);
 
   if(isLoading) {
     dispatch(setIsLoading(true));
@@ -22,12 +22,12 @@ const VisitsList = () => {
 
   useEffect(() => {
     setTimeout(() => {
-      dispatch(getVisits())
-    }, 1500)
+      dispatch(getVisits());
+    }, 1500);
   }, []);
 
   console.log(visits);
-  console.log(searchFilter);
+  // console.log(searchFilter);
     
   return (
     <>
@@ -37,6 +37,7 @@ const VisitsList = () => {
             {visits.length === 0 ? <h1 style={{margin: '325px auto'}} >No items have been added...</h1> : 
               <VisitCard 
                 visits={visits}
+                searchFilter={searchFilter}
               />
             }
           </div>
