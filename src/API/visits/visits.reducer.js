@@ -6,7 +6,9 @@ import {
     UPDATE_VISIT_SUCCESS, 
     DELETE_VISIT_REQUEST, 
     GET_VISIT_REQUEST,
-    SEARCH_FILTER
+    SEARCH_FILTER,
+    SEARCH_BY_DOCTOR_FILTER,
+    SEARCH_BY_URGENCY_FILTER
 } from "./visits.actions";
 
 const initState = {
@@ -17,6 +19,8 @@ const initState = {
     visits: [],
     deleteVisitRequest: null,
     searchValue: '',
+    searchByDoctorValue: '',
+    searchByUrgencyValue: ''
 }
 
 const visitsReducer = (state = initState, action) => {
@@ -48,6 +52,22 @@ const visitsReducer = (state = initState, action) => {
             return {
                 ...state,
                 searchValue: action.payload,
+            }
+        }
+
+        // SEARCH_BY_DOCTOR_FILTER dropdown
+        case SEARCH_BY_DOCTOR_FILTER: {
+            return {
+                ...state,
+                searchByDoctorValue: action.payload,
+            }
+        }
+
+        // SEARCH_BY_URGENCY_FILTER dropdown
+        case SEARCH_BY_URGENCY_FILTER: {
+            return {
+                ...state,
+                searchByUrgencyValue: action.payload,
             }
         }
 

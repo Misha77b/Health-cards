@@ -15,6 +15,8 @@ const VisitsList = () => {
   const visits = useSelector((state) => state.visitsReducer.visits);
   const isLoading = useSelector(state => state.visitsReducer.isLoading);
   const searchFilter = useSelector(state => state.visitsReducer.searchValue);
+  const searchByDoctorValue = useSelector(state => state.visitsReducer.searchByDoctorValue);
+  const searchByUrgencyValue = useSelector(state => state.visitsReducer.searchByUrgencyValue);
 
   if(isLoading) {
     dispatch(setIsLoading(true));
@@ -28,6 +30,7 @@ const VisitsList = () => {
 
   console.log(visits);
   // console.log(searchFilter);
+  console.log(searchByDoctorValue);
     
   return (
     <>
@@ -38,6 +41,12 @@ const VisitsList = () => {
               <VisitCard 
                 visits={visits}
                 searchFilter={searchFilter}
+                
+                // SEARCH_BY_DOCTOR_FILTER dropdown
+                searchByDoctorValue={searchByDoctorValue}
+
+                // SEARCH_BY_URGENCY_FILTER dropdown
+                searchByUrgencyValue={searchByUrgencyValue}
               />
             }
           </div>

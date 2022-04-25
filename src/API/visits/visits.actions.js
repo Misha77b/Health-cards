@@ -28,6 +28,20 @@ export const searchFilter = (data) => ({
     payload: data
 })
 
+// SEARCH_BY_DOCTOR_FILTER dropdown
+export const SEARCH_BY_DOCTOR_FILTER = 'SEARCH_BY_DOCTOR_FILTER';
+export const searchByDoctorFilter = (data) => ({
+    type: SEARCH_BY_DOCTOR_FILTER,
+    payload: data
+})
+
+// SEARCH_BY_URGENCY_FILTER dropdown
+export const SEARCH_BY_URGENCY_FILTER = 'SEARCH_BY_URGENCY_FILTER';
+export const searchByUrgencyFilter = (data) => ({
+    type: SEARCH_BY_URGENCY_FILTER,
+    payload: data
+})
+
 export const UPDATE_VISIT_REQUEST = 'UPDATE_VISIT_REQUEST';
 export const updateVisitRequest = (data) => ({
     type: UPDATE_VISIT_REQUEST,

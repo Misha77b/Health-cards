@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import PropTypes from 'prop-types';
 import Accordion from '../accordion/Accordion';
 
-const VisitCard = ({ visits, searchFilter }) => {
+const VisitCard = ({ visits, searchFilter, searchByDoctorValue,  searchByUrgencyValue}) => {
 
   console.log(searchFilter);
   console.log(visits);
@@ -10,9 +10,10 @@ const VisitCard = ({ visits, searchFilter }) => {
     <>
       {visits.map((visit) => {
         const searchByFullName = visit.fullName.toLowerCase().includes(searchFilter.toLowerCase());
-        const searchByDoctor = visit.doctor.toLowerCase().includes(searchFilter.toLowerCase());
-        const searchByUrgency = visit.urgency.toLowerCase().includes(searchFilter.toLowerCase());
-        if(searchByFullName || searchByDoctor || searchByUrgency) {
+        const searchByDoctor = visit.doctor.includes(searchByDoctorValue);
+        const searchByUrgency = visit.urgency.includes(searchByUrgencyValue);
+        // if(searchByFullName) {
+        if(searchByFullName && searchByDoctor && searchByUrgency) {
           return <div key={visit.id}> 
             <Accordion 
               fullName={visit.fullName}
@@ -38,5 +39,7 @@ export default VisitCard;
 
 VisitCard.propTypes = {
   visits: PropTypes.array,
-  searchFilter: PropTypes.string
+  searchFilter: PropTypes.string,
+  searchByDoctorValue: PropTypes.string,
+  searchByUrgencyValue: PropTypes.string
 }
