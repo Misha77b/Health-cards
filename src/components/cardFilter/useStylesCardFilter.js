@@ -8,9 +8,6 @@ const UseStylesCardFilter = makeStyles({
             flexDirection: 'wrap',
             width: '80vw'
         },
-        '.search': {
-            display: 'flex',
-        },
         '.search-input': {
             width: '60%',
             margin: '0 5px 0 0 ',
@@ -19,10 +16,10 @@ const UseStylesCardFilter = makeStyles({
             p: '2px 4px', 
         },
         '.dropdown-filter ': {
+            // margin: '0 5px',
             width: '20%',
-            margin: '0 5px',
             background: 'white',
-            borderRadius: '4px'
+            borderRadius: '4px',
         },
         '.search-input:hover': {
             border: '1px solid black'

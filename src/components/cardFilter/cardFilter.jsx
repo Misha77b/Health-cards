@@ -12,6 +12,26 @@ import SearchIcon from '@mui/icons-material/Search';
 import { searchFilter, searchByDoctorFilter, searchByUrgencyFilter } from '../../API/visits/visits.actions';
 import UseStylesCardFilter from './useStylesCardFilter';
 
+const dropdownTextFielsdStyle = {
+  "& .MuiInputLabel-shrink": {
+    display: "none",
+  },
+  '& .MuiOutlinedInput-root': {
+    '& fieldset': {
+      border: 'none',
+    },
+    '&:hover fieldset': {
+      border: 'none',
+    },
+    '&.Mui-focused fieldset': {
+      border: 'none',
+    },
+  },
+  "& legend": {
+    display: "none",
+  }
+};
+
 const CardFilter = () => {
   UseStylesCardFilter();
   const dispatch = useDispatch()
@@ -38,7 +58,7 @@ const CardFilter = () => {
   return (
     <div className='search-wrapper'>
       <Paper
-        className='search search-input'
+        className='search-input'
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
@@ -55,10 +75,11 @@ const CardFilter = () => {
       {/* try to do select search filter for docotr */}
       <TextField
         select
-        className='search dropdown-filter dropdown-doctor-search'
+        className='dropdown-filter dropdown-doctor-search'
         value={doctor}
         label="Doctor"
         onChange={onSearchByDoctor}
+        sx={dropdownTextFielsdStyle}
       >
         <MenuItem value="">All</MenuItem>
         <MenuItem value="Therapist">Therapist</MenuItem>
@@ -69,10 +90,11 @@ const CardFilter = () => {
       {/* try to do select search filter by urgency */}
       <TextField
         select
-        className='search dropdown-filter dropdown-urgency-search'
+        className='dropdown-filter dropdown-urgency-search'
         value={urgency}
         label="Urgency"
-        onChange={onSearchByUrgency}
+        onChange={onSearchByUrgency}        
+        sx={dropdownTextFielsdStyle}
       >
         <MenuItem value="">All</MenuItem>
         <MenuItem value="Normal">Normal</MenuItem>
