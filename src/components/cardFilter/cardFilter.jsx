@@ -1,14 +1,13 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-// import TextField from '@mui/material//TextField';
 
 import Paper from '@mui/material/Paper';
 import InputBase from '@mui/material/InputBase';
-import { MenuItem } from '@mui/material';
+import { MenuItem, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-import Select from '@mui/material/Select';
+// import Select from '@mui/material/Select';
 
 import { searchFilter, searchByDoctorFilter, searchByUrgencyFilter } from '../../API/visits/visits.actions';
 import UseStylesCardFilter from './useStylesCardFilter';
@@ -37,17 +36,9 @@ const CardFilter = () => {
   };
 
   return (
-    <>
+    <div className='search-wrapper'>
       <Paper
-        component="form"
-        sx={{ 
-          marginTop: '20px', 
-          p: '2px 4px', 
-          display: 'flex', 
-          alignItems: 'center', 
-          width: '50vw',
-          boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px'
-        }}
+        className='search search-input'
       >
         <InputBase
           sx={{ ml: 1, flex: 1 }}
@@ -62,47 +53,33 @@ const CardFilter = () => {
 
 
       {/* try to do select search filter for docotr */}
-      <Select
+      <TextField
+        select
+        className='search dropdown-filter dropdown-doctor-search'
         value={doctor}
-        placeholder="Choose doctor"
+        label="Doctor"
         onChange={onSearchByDoctor}
-        sx={{ 
-          marginTop: '20px',
-          display: 'flex', 
-          alignItems: 'center', 
-          width: '50vw',
-          boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px',
-          background: 'white',
-          color: 'black'
-        }}
       >
         <MenuItem value="">All</MenuItem>
         <MenuItem value="Therapist">Therapist</MenuItem>
         <MenuItem value="Dentist">Dentist</MenuItem>
         <MenuItem value="Cardiologist">Cardiologist</MenuItem>
-      </Select>
+      </TextField>
 
       {/* try to do select search filter by urgency */}
-      <Select
+      <TextField
+        select
+        className='search dropdown-filter dropdown-urgency-search'
         value={urgency}
-        placeholder="Choose urgency"
+        label="Urgency"
         onChange={onSearchByUrgency}
-        sx={{ 
-          marginTop: '20px',
-          display: 'flex', 
-          alignItems: 'center', 
-          width: '50vw',
-          boxShadow: 'rgba(0, 0, 0, 0.45) 0px 25px 20px -20px',
-          background: 'white',
-          color: 'black'
-        }}
       >
         <MenuItem value="">All</MenuItem>
         <MenuItem value="Normal">Normal</MenuItem>
         <MenuItem value="Priority">Priority</MenuItem>
         <MenuItem value="Urgent">Urgent</MenuItem>
-      </Select>
-    </>
+      </TextField>
+    </div>
   )
 }
 
