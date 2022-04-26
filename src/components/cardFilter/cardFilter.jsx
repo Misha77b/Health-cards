@@ -7,30 +7,9 @@ import { MenuItem, TextField } from '@mui/material';
 import Divider from '@mui/material/Divider';
 import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
-// import Select from '@mui/material/Select';
 
 import { searchFilter, searchByDoctorFilter, searchByUrgencyFilter } from '../../API/visits/visits.actions';
-import UseStylesCardFilter from './useStylesCardFilter';
-
-const dropdownTextFielsdStyle = {
-  "& .MuiInputLabel-shrink": {
-    display: "none",
-  },
-  '& .MuiOutlinedInput-root': {
-    '& fieldset': {
-      border: 'none',
-    },
-    '&:hover fieldset': {
-      border: 'none',
-    },
-    '&.Mui-focused fieldset': {
-      border: 'none',
-    },
-  },
-  "& legend": {
-    display: "none",
-  }
-};
+import UseStylesCardFilter, { dropdownTextFielsdStyle } from './useStylesCardFilter';
 
 const CardFilter = () => {
   UseStylesCardFilter();
@@ -71,36 +50,37 @@ const CardFilter = () => {
         </IconButton>
       </Paper>
 
+      <div className='dropdown-selectors-wrapper'>
+        {/* try to do select search filter for docotr */}
+        <TextField
+          select
+          className='dropdown-filter dropdown-doctor-search'
+          value={doctor}
+          label="Doctor"
+          onChange={onSearchByDoctor}
+          sx={dropdownTextFielsdStyle}
+        >
+          <MenuItem value="">All</MenuItem>
+          <MenuItem value="Therapist">Therapist</MenuItem>
+          <MenuItem value="Dentist">Dentist</MenuItem>
+          <MenuItem value="Cardiologist">Cardiologist</MenuItem>
+        </TextField>
 
-      {/* try to do select search filter for docotr */}
-      <TextField
-        select
-        className='dropdown-filter dropdown-doctor-search'
-        value={doctor}
-        label="Doctor"
-        onChange={onSearchByDoctor}
-        sx={dropdownTextFielsdStyle}
-      >
-        <MenuItem value="">All</MenuItem>
-        <MenuItem value="Therapist">Therapist</MenuItem>
-        <MenuItem value="Dentist">Dentist</MenuItem>
-        <MenuItem value="Cardiologist">Cardiologist</MenuItem>
-      </TextField>
-
-      {/* try to do select search filter by urgency */}
-      <TextField
-        select
-        className='dropdown-filter dropdown-urgency-search'
-        value={urgency}
-        label="Urgency"
-        onChange={onSearchByUrgency}        
-        sx={dropdownTextFielsdStyle}
-      >
-        <MenuItem value="">All</MenuItem>
-        <MenuItem value="Normal">Normal</MenuItem>
-        <MenuItem value="Priority">Priority</MenuItem>
-        <MenuItem value="Urgent">Urgent</MenuItem>
-      </TextField>
+        {/* try to do select search filter by urgency */}
+        <TextField
+          select
+          className='dropdown-filter dropdown-urgency-search'
+          value={urgency}
+          label="Urgency"
+          onChange={onSearchByUrgency}        
+          sx={dropdownTextFielsdStyle}
+        >
+          <MenuItem value="">All</MenuItem>
+          <MenuItem value="Normal">Normal</MenuItem>
+          <MenuItem value="Priority">Priority</MenuItem>
+          <MenuItem value="Urgent">Urgent</MenuItem>
+        </TextField>
+      </div>
     </div>
   )
 }

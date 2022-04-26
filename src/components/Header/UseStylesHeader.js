@@ -14,6 +14,7 @@ const UseStylesHeader = makeStyles({
             width: '50px',
             height: '50px',
             margin: '0 50px',
+            cursor: 'pointer'
         },
         '.header-logo-title' : {
             margin: '10px 15px',                   
@@ -21,6 +22,7 @@ const UseStylesHeader = makeStyles({
             fontSize: '24px',
             fontWeight: '700',
             color: 'gold',
+            cursor: 'pointer'
         },
         '.header-btn' : {
             margin: '10px 50px',
