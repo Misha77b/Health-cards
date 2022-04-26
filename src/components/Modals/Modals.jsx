@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useSelector } from 'react-redux';
-import Box from '@mui/material/Box';
 import Button from '@mui/material/Button';
 import Modal from '@mui/material/Modal';
 import DialogContent from '@mui/material/DialogContent';
@@ -45,15 +44,15 @@ const Modals = ({open, handleClose}) => {
       >
         <DialogContent scroll='body' sx={style}>
           <Button 
-              onClick={handleClose}
-              disableRipple={true}
-              sx={{
-                  position: 'absolute',
-                  color: 'black',
-                  right: '-10px',
-                  top: '10px',
-                  padding: '0'
-              }}
+            onClick={handleClose}
+            disableRipple={true}
+            sx={{
+                position: 'absolute',
+                color: 'black',
+                right: '-10px',
+                top: '10px',
+                padding: '0'
+            }}
           >
             <CloseIcon />
           </Button>

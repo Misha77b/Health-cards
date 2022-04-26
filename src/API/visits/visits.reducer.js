@@ -41,7 +41,6 @@ const visitsReducer = (state = initState, action) => {
         }
 
         case GET_VISIT_REQUEST: {
-            console.log(action.payload);
             return {
                 ...state,
                 editVisitId: action.payload

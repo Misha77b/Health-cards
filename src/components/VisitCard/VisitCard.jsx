@@ -1,18 +1,15 @@
-import React, { useState } from 'react';
+import React from 'react';
 import PropTypes from 'prop-types';
 import Accordion from '../accordion/Accordion';
 
 const VisitCard = ({ visits, searchFilter, searchByDoctorValue,  searchByUrgencyValue}) => {
 
-  console.log(searchFilter);
-  console.log(visits);
   return (
     <>
       {visits.map((visit) => {
         const searchByFullName = visit.fullName.toLowerCase().includes(searchFilter.toLowerCase());
         const searchByDoctor = visit.doctor.includes(searchByDoctorValue);
         const searchByUrgency = visit.urgency.includes(searchByUrgencyValue);
-        // if(searchByFullName) {
         if(searchByFullName && searchByDoctor && searchByUrgency) {
           return <div key={visit.id}> 
             <Accordion 

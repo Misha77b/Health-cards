@@ -19,8 +19,6 @@ const CardFilter = () => {
   const [urgency, setUrgency] = useState('');
   
   const onSearchFilter = (e) => {
-    console.log(e.target.value);
-    console.log(dispatch(searchFilter(e.target.value)));
     dispatch(searchFilter(e.target.value));
   }
 
@@ -51,7 +49,6 @@ const CardFilter = () => {
       </Paper>
 
       <div className='dropdown-selectors-wrapper'>
-        {/* try to do select search filter for docotr */}
         <TextField
           select
           className='dropdown-filter dropdown-doctor-search'
@@ -66,7 +63,6 @@ const CardFilter = () => {
           <MenuItem value="Cardiologist">Cardiologist</MenuItem>
         </TextField>
 
-        {/* try to do select search filter by urgency */}
         <TextField
           select
           className='dropdown-filter dropdown-urgency-search'

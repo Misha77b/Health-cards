@@ -5,11 +5,3 @@ export const authSuccess = (data) => {
         paylodad: data
     }
 }
-
-// export const AUTH_ERROR = "AUTH_ERROR";
-// export const authError = (string) => {
-//     return {
-//         type: AUTH_ERROR,
-//         payload: string
-//     }
-// }

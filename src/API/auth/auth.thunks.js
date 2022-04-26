@@ -1,4 +1,4 @@
-import { authSuccess, authError } from "./auth.actions";
+import { authSuccess } from "./auth.actions";
 import { setError } from "../errorHandler/errorHandler.actions";
 
 export const logIn = (userDate) => {
@@ -20,7 +20,6 @@ export const logIn = (userDate) => {
         })
         .then(token => {
           if(token === undefined) {
-            //   Temporary error handler
             return alert('Log in error, wrong email or password')
           } else {
             console.log(token);

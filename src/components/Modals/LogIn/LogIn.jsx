@@ -45,7 +45,6 @@ const LogIn = ({ handleClose }) => {
         email: values.email,
         password: values.password,
       }
-      console.log(login);
       dispatch(logIn(login));
       handleClose();
     },
@@ -65,51 +64,51 @@ const LogIn = ({ handleClose }) => {
           style={style}
           onSubmit={formik.handleSubmit}
         >
-            <TextField  
-              fullWidth
-              id="email"
-              name="email"
-              label="Email"
-              value={formik.values.email}
-              onChange={formik.handleChange}
-              error={formik.touched.email && Boolean(formik.errors.email)}
-              helperText={formik.touched.email && formik.errors.email}
-            />
-            <TextField
-              margin='normal'
-              fullWidth
-              id="password"
-              name="password"
-              label="Password"
-              type={showPassword ? 'text' : 'password'}
-              value={formik.values.password}
-              onChange={formik.handleChange}
-              error={formik.touched.password && Boolean(formik.errors.password)}
-              helperText={formik.touched.password && formik.errors.password}
-            />
+          <TextField  
+            fullWidth
+            id="email"
+            name="email"
+            label="Email"
+            value={formik.values.email}
+            onChange={formik.handleChange}
+            error={formik.touched.email && Boolean(formik.errors.email)}
+            helperText={formik.touched.email && formik.errors.email}
+          />
+          <TextField
+            margin='normal'
+            fullWidth
+            id="password"
+            name="password"
+            label="Password"
+            type={showPassword ? 'text' : 'password'}
+            value={formik.values.password}
+            onChange={formik.handleChange}
+            error={formik.touched.password && Boolean(formik.errors.password)}
+            helperText={formik.touched.password && formik.errors.password}
+          />
 
-            <IconButton
-              aria-label="toggle password visibility"
-              onClick={handleClickShowPassword}
-              onMouseDown={handleMouseDownPassword}
-              sx={{
-                position: 'absolute',
-                top: 127,
-                right: 40
-              }}
-            >
-              {showPassword ? <VisibilityOff /> : <Visibility />}
-            </IconButton>
+          <IconButton
+            aria-label="toggle password visibility"
+            onClick={handleClickShowPassword}
+            onMouseDown={handleMouseDownPassword}
+            sx={{
+              position: 'absolute',
+              top: 127,
+              right: 40
+            }}
+          >
+            {showPassword ? <VisibilityOff /> : <Visibility />}
+          </IconButton>
 
-            <Button sx={{
-                width: '175px', 
-                margin: '0 auto',
-              }}
-              variant='contained'
-              type="submit"
-            >
-              Log in
-            </Button>
+          <Button sx={{
+              width: '175px', 
+              margin: '0 auto',
+            }}
+            variant='contained'
+            type="submit"
+          >
+            Log in
+          </Button>
         </form>
       </div>
     );

@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from 'react';
+import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import PropTypes from 'prop-types';
 
@@ -13,15 +13,11 @@ import Button from '@mui/material/Button';
 import { deleteVisit, updateVisit, getVisit } from '../../API/visits/visits.thunks';
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
+
   const dispatch = useDispatch();
-
-
-  const visitToEditId = useSelector((state) => state.visitsReducer.editVisitId);
-  const visitToEditState = useSelector((state) => state.visitsReducer.updateVisitRequest);
 
   const [clicked, setClicked] = useState(false);
   const [disabled, setDisabled] = useState(true);
-  // const [visitToEdit, setVisitToEdit] = useState(null);
   const [editBtnRendering, setEditBtnRendering] = useState('block');
   const [saveBtnRendering, setSaveBtnRendering] = useState('none');
 
@@ -39,7 +35,6 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
 
   const handleEditRequest = (e) => {
     const id = e.target.id;
-    console.log(id);
 
     dispatch(getVisit(id));
     setDisabled(!disabled);
@@ -76,7 +71,6 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         lastVisitDate: values.lastVisitDate,
         id: values.id
       }
-      console.log(editVisitValues);
       dispatch(updateVisit(editVisitValues));
       setDisabled(!disabled);
       setEditBtnRendering('block');
@@ -92,27 +86,24 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
         >
           <Wrap>
             <div style={{display: 'flex', justifyContent: 'space-between'}}>
-              {/* {disabled ?  */}
               <Button
-                  sx={{display: `${editBtnRendering}`}}
-                  onClick={handleEditRequest}
-                  id={id}
-                  color='secondary' 
-                  variant='contained'
-                >
-                  Edit
-                </Button> 
-                {/* :  */}
-                <Button 
-                  sx={{display: `${saveBtnRendering}`}}
-                  type='submit'
-                  id={id}
-                  color='secondary' 
-                  variant='contained'
-                >
-                  Save
-                </Button>
-              {/* } */}
+                sx={{display: `${editBtnRendering}`}}
+                onClick={handleEditRequest}
+                id={id}
+                color='secondary' 
+                variant='contained'
+              >
+                Edit
+              </Button>
+              <Button 
+                sx={{display: `${saveBtnRendering}`}}
+                type='submit'
+                id={id}
+                color='secondary' 
+                variant='contained'
+              >
+                Save
+              </Button>
               <Button 
                 onClick={handleVisitDelete}
                 id={id}

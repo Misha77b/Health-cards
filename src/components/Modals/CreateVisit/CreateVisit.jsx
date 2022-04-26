@@ -81,7 +81,6 @@ const CreateVisit = ( {handleClose} ) => {
         age: values.age,
         lastVisitDate: values.lastVisitDate,
       }
-      console.log(createVisitValues);
       dispatch(createVisit(createVisitValues));
       handleClose();
     },
@@ -162,7 +161,6 @@ const CreateVisit = ( {handleClose} ) => {
               </MenuItem>
           ))}
         </TextField>
-        {/* propper markup fields for dentist, cardiologist and therapist */}
         {selectedDoctor === "Cardiologist" && 
           <>
             <TextField

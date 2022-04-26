@@ -1,6 +1,5 @@
 import React, { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-// import PropTypes from 'prop-types';
 
 import Preloader from '../Preloader/Preloader';
 import { setIsLoading } from '../../API/visits/visits.actions';
@@ -27,10 +26,6 @@ const VisitsList = () => {
       dispatch(getVisits());
     }, 1500);
   }, []);
-
-  console.log(visits);
-  // console.log(searchFilter);
-  console.log(searchByDoctorValue);
     
   return (
     <>
@@ -41,11 +36,7 @@ const VisitsList = () => {
               <VisitCard 
                 visits={visits}
                 searchFilter={searchFilter}
-                
-                // SEARCH_BY_DOCTOR_FILTER dropdown
                 searchByDoctorValue={searchByDoctorValue}
-
-                // SEARCH_BY_URGENCY_FILTER dropdown
                 searchByUrgencyValue={searchByUrgencyValue}
               />
             }
