@@ -7,11 +7,9 @@ const VisitCard = ({ visits, searchFilter, searchByDoctorValue,  searchByUrgency
   return (
     <>
       {visits.map((visit) => {
-        setTimeout(() => {
-          const searchByFullName = visit.fullName.toLowerCase().includes(searchFilter.toLowerCase());
-          const searchByDoctor = visit.doctor.includes(searchByDoctorValue);
-          const searchByUrgency = visit.urgency.includes(searchByUrgencyValue);
-        }, 1000)
+        const searchByFullName = visit.fullName.toLowerCase().includes(searchFilter.toLowerCase());
+        const searchByDoctor = visit.doctor.includes(searchByDoctorValue);
+        const searchByUrgency = visit.urgency.includes(searchByUrgencyValue);
         if(searchByFullName && searchByDoctor && searchByUrgency) {
           return <div key={visit.id}> 
             <Accordion 
