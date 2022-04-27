@@ -1,6 +1,6 @@
 import { makeStyles } from "@mui/styles";
 
-const UseStylesCardFilter = makeStyles({
+const UseStylesSearch = makeStyles({
     '@global': {
         '.search-wrapper': {
             marginTop: '20px',
@@ -28,24 +28,4 @@ const UseStylesCardFilter = makeStyles({
     }
 })
 
-export default UseStylesCardFilter
-
-export const dropdownTextFielsdStyle = {
-    "& .MuiInputLabel-shrink": {
-      display: "none",
-    },
-    '& .MuiOutlinedInput-root': {
-      '& fieldset': {
-        border: 'none',
-      },
-      '&:hover fieldset': {
-        border: 'none',
-      },
-      '&.Mui-focused fieldset': {
-        border: 'none',
-      },
-    },
-    "& legend": {
-      display: "none",
-    }
-  };
+export default UseStylesSearch

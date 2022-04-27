@@ -9,10 +9,11 @@ import IconButton from '@mui/material/IconButton';
 import SearchIcon from '@mui/icons-material/Search';
 
 import { searchFilter, searchByDoctorFilter, searchByUrgencyFilter } from '../../API/visits/visits.actions';
-import UseStylesCardFilter, { dropdownTextFielsdStyle } from './useStylesCardFilter';
+import UseStylesSearch from './useStylesSearch';
+import { dropdownSelectStyle } from './dropdownSelectStyles';
 
-const CardFilter = () => {
-  UseStylesCardFilter();
+const Search = () => {
+  UseStylesSearch();
   const dispatch = useDispatch()
   
   const [doctor, setDoctor] = useState('');
@@ -55,7 +56,7 @@ const CardFilter = () => {
           value={doctor}
           label="Doctor"
           onChange={onSearchByDoctor}
-          sx={dropdownTextFielsdStyle}
+          sx={dropdownSelectStyle}
         >
           <MenuItem value="">All</MenuItem>
           <MenuItem value="Therapist">Therapist</MenuItem>
@@ -69,7 +70,7 @@ const CardFilter = () => {
           value={urgency}
           label="Urgency"
           onChange={onSearchByUrgency}        
-          sx={dropdownTextFielsdStyle}
+          sx={dropdownSelectStyle}
         >
           <MenuItem value="">All</MenuItem>
           <MenuItem value="Normal">Normal</MenuItem>
@@ -81,4 +82,4 @@ const CardFilter = () => {
   )
 }
 
-export default CardFilter
+export default Search
