@@ -14,12 +14,9 @@ export const AccordionSection = styled.div`
   gap: 10px
   color: black;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  .css-1c2i806-MuiFormLabel-root-MuiInputLabel-root.Mui-disabled{
-    color: black;
-  }
   .css-1x51dt5-MuiInputBase-input-MuiInput-input.Mui-disabled {
     -webkit-text-fill-color: black;
-  }
+  },
 `;
 
 export const Container = styled.div`
