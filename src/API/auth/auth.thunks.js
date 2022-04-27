@@ -22,7 +22,6 @@ export const logIn = (userDate) => {
           if(token === undefined) {
             return alert('Log in error, wrong email or password')
           } else {
-            console.log(token);
             localStorage.setItem('token', token)
             dispatch(authSuccess(token))
           }
