@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import PropTypes from 'prop-types';
 
-import { AccordionSection, Container, Wrap, Dropdown } from './AccordionStyledComponents';
+import { AccordionSection, Container, Wrap, Dropdown, StyledTextField } from './AccordionStyledComponents';
 import ArrowDownwardIcon from '@mui/icons-material/ArrowDownward';
 import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
@@ -11,6 +11,7 @@ import { validationSchema } from './ValidationSchema';
 import TextField from '@mui/material//TextField';
 import Button from '@mui/material/Button';
 import { deleteVisit, updateVisit, getVisit } from '../../API/visits/visits.thunks';
+import { makeStyles } from '@mui/styles';
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
 
@@ -113,7 +114,8 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                 Delete
               </Button>
             </div>
-            <TextField
+            {/* <TextField */}
+            <StyledTextField
               disabled={disabled}
               variant="standard"
               id="fullName"

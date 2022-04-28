@@ -1,5 +1,7 @@
 import styled from 'styled-components';
 
+import TextField from '@mui/material//TextField';
+
 export const AccordionSection = styled.div`
   margin: 20px 50px;
   display: flex;
@@ -14,9 +16,9 @@ export const AccordionSection = styled.div`
   gap: 10px
   color: black;
   box-shadow: rgba(0, 0, 0, 0.16) 0px 3px 6px, rgba(0, 0, 0, 0.23) 0px 3px 6px;
-  .css-1x51dt5-MuiInputBase-input-MuiInput-input.Mui-disabled {
-    -webkit-text-fill-color: black;
-  },
+  // .css-1x51dt5-MuiInputBase-input-MuiInput-input.Mui-disabled {
+  //   -webkit-text-fill-color: black;
+  // },
 `;
 
 export const Container = styled.div`
@@ -44,4 +46,28 @@ export const Dropdown = styled.div`
   justify-content: center;
   align-items: center;
   gap: 10px;
+`;
+
+export const StyledTextField = styled(TextField)`
+  background: white;
+  & label.Mui-disabled {
+    color: black;
+  }
+  // & .MuiInput-underline:after {
+  //   border-bottom-color: white;
+  // }
+  // & .MuiOutlinedInput-root {
+  //   & fieldset {
+  //     border-color: white;
+  //   }
+  //   &:hover fieldset {
+  //     border-color: white;
+  //   }
+  //   &.Mui-focused fieldset {
+  //     border-color: white;
+  //   }
+  // }
+  // & input.Mui-disabled: {
+  //   -webkit-text-fill-color: green,
+  // }
 `;
