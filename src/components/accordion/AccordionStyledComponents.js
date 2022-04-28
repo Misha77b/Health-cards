@@ -49,25 +49,10 @@ export const Dropdown = styled.div`
 `;
 
 export const StyledTextField = styled(TextField)`
-  background: white;
   & label.Mui-disabled {
     color: black;
-  }
-  // & .MuiInput-underline:after {
-  //   border-bottom-color: white;
-  // }
-  // & .MuiOutlinedInput-root {
-  //   & fieldset {
-  //     border-color: white;
-  //   }
-  //   &:hover fieldset {
-  //     border-color: white;
-  //   }
-  //   &.Mui-focused fieldset {
-  //     border-color: white;
-  //   }
-  // }
-  // & input.Mui-disabled: {
-  //   -webkit-text-fill-color: green,
-  // }
+  },
+  & input.Mui-disabled{
+    -webkit-text-fill-color: black;
+  },
 `;

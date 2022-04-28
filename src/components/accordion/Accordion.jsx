@@ -114,7 +114,6 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                 Delete
               </Button>
             </div>
-            {/* <TextField */}
             <StyledTextField
               disabled={disabled}
               variant="standard"
@@ -124,7 +123,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               value={formik.values.fullName}
               onChange={formik.handleChange}
             />
-            <TextField
+            <StyledTextField
               disabled={disabled}
               variant="standard"
               id='doctor'
@@ -138,7 +137,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
           {clicked ? (
             <Dropdown>
               {doctor === 'Cardiologist' && <>
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -148,7 +147,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitPurpose}
                   onChange={formik.handleChange}
                 />
-                <TextField  
+                <StyledTextField  
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -158,7 +157,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitShortDescription}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -168,7 +167,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.urgency}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -178,7 +177,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.bloodPressure}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -188,7 +187,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.massBodyIndex}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -198,7 +197,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.prevIllnesses}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -211,7 +210,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               </>}
 
               {doctor === 'Dentist' && <>
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -221,7 +220,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitPurpose}
                   onChange={formik.handleChange}
                 />
-                <TextField  
+                <StyledTextField  
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -231,7 +230,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitShortDescription}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -241,7 +240,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.urgency}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -254,7 +253,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
               </>}
 
               {doctor === 'Therapist' && <>
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -264,7 +263,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitPurpose}
                   onChange={formik.handleChange}
                 />
-                <TextField  
+                <StyledTextField  
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -274,7 +273,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.visitShortDescription}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
@@ -284,7 +283,7 @@ const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doc
                   value={formik.values.urgency}
                   onChange={formik.handleChange}
                 />
-                <TextField
+                <StyledTextField
                   disabled={disabled}
                   variant="standard"
                   fullWidth
