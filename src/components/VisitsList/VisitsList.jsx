@@ -23,9 +23,9 @@ const VisitsList = () => {
   };
 
   useEffect(() => {
-    setTimeout(() => {
+    // setTimeout(() => {
       dispatch(getVisits());
-    }, 1500);
+    // }, 1500);
   }, []);
     
   return (
