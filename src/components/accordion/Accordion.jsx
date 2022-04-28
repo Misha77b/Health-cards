@@ -8,10 +8,8 @@ import ArrowUpwardIcon from '@mui/icons-material/ArrowUpward';
 
 import { useFormik } from 'formik';
 import { validationSchema } from './ValidationSchema';
-import TextField from '@mui/material//TextField';
 import Button from '@mui/material/Button';
 import { deleteVisit, updateVisit, getVisit } from '../../API/visits/visits.thunks';
-import { makeStyles } from '@mui/styles';
 
 const Accordion = ({ fullName, visitPurpose, visitShortDescription, urgency, doctor, bloodPressure, massBodyIndex, prevIllnesses, age, lastVisitDate, id }) => {
 
