@@ -86,15 +86,15 @@ const visitsReducer = (state = initState, action) => {
         }
 
         case UPDATE_VISIT_SUCCESS: {
-            const updatedVisit = state.visits.map((visit) => {
-                if(visit.id === action.payload.id) {
-                    return updatedVisit;
-                }
-                return visit
-            })
+            // const updatedVisit = state.visits.map((visit) => {
+            //     if(visit.id === action.payload.id) {
+            //         return updatedVisit;
+            //     }
+            //     return visit
+            // })
             return {
                 ...state, 
-                visits: updatedVisit,
+                visits: state.visits.map((visit) => {visit.id === action.payload.id ? updatedVisit : visit}),
                 editVisitId: null
             }
         }
