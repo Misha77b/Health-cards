@@ -28,11 +28,15 @@ const Header = () => {
             onClick={handleOpen}
             className='header-btn'
             sx={{
-            margin: '10px 50px',
-            border: '2px solid gold',
-            background: 'transparent',
-            color: 'gold',
-            borderRadius: '5px',
+              margin: '10px 50px',
+              border: '2px solid gold',
+              background: 'transparent',
+              color: 'gold',
+              borderRadius: '5px',
+              ['@media (max-width: 425px)']: {
+                margin: '10px 15px',
+                fontSize: '12px'
+              },
             }}
         > 
           {!isAuth ? 'Log in' : 'Create visit'}

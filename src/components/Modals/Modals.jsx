@@ -20,6 +20,12 @@ const style = {
   borderRadius: '10px',
   p: 4,
   overflowX: 'hidden',
+  ['@media (max-width: 768px)']: {
+    width: 300,
+  },
+  ['@media (max-width: 425px)']: {
+    width: 250,
+  },
 };
 
 const Modals = ({open, handleClose}) => {

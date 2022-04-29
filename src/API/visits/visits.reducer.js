@@ -54,7 +54,6 @@ const visitsReducer = (state = initState, action) => {
             }
         }
 
-        // SEARCH_BY_DOCTOR_FILTER dropdown
         case SEARCH_BY_DOCTOR_FILTER: {
             return {
                 ...state,
@@ -62,7 +61,6 @@ const visitsReducer = (state = initState, action) => {
             }
         }
 
-        // SEARCH_BY_URGENCY_FILTER dropdown
         case SEARCH_BY_URGENCY_FILTER: {
             return {
                 ...state,
@@ -86,12 +84,6 @@ const visitsReducer = (state = initState, action) => {
         }
 
         case UPDATE_VISIT_SUCCESS: {
-            // const updatedVisit = state.visits.map((visit) => {
-            //     if(visit.id === action.payload.id) {
-            //         return updatedVisit;
-            //     }
-            //     return visit
-            // })
             return {
                 ...state, 
                 visits: state.visits.map((visit) => {visit.id === action.payload.id ? updatedVisit : visit}),

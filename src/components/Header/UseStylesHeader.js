@@ -8,13 +8,21 @@ const UseStylesHeader = makeStyles({
             background: 'rgba(10, 10, 10, 0.7)',
             display: 'flex',
             alignItems: 'center',
-            justifyContent: 'space-between'
+            justifyContent: 'space-between',    
+            ['@media (max-width: 425px)']: {
+                height: '60px',
+            }
         },
         '.logo-img' : {
             width: '50px',
             height: '50px',
             margin: '0 50px',
-            cursor: 'pointer'
+            cursor: 'pointer' ,
+            ['@media (max-width: 425px)']: {
+                width: '35px',
+                height: '35px',
+                margin: '0 25px',
+            }
         },
         '.header-logo-title' : {
             margin: '10px 15px',                   
@@ -22,12 +30,11 @@ const UseStylesHeader = makeStyles({
             fontSize: '24px',
             fontWeight: '700',
             color: 'gold',
-            cursor: 'pointer'
+            cursor: 'pointer',
+            ['@media (max-width: 425px)']: {
+                display: 'none',
+            }
         },
-        '.header-btn' : {
-            margin: '10px 50px',
-            fontSize: '18px',
-        }
     }
 })
 
