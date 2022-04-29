@@ -8,6 +8,10 @@ You can use one of the given emails and passwords to check how programm work, or
 2. **email:** `example2@gmail.com` **password:** `123456789`
 3. **email:** `example2@gmail.com` **password:** `123456789`
 
+## Project deploy
+
+1. **Vercel deploy:** [Helath-cards vercel](https://github.com/facebook/create-react-app)
+2. **Netlify deploy:** [Helath-cards netlify](https://github.com/facebook/create-react-app)
 
 # Getting Started with Create React App
 
