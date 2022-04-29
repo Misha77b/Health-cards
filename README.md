@@ -10,8 +10,8 @@ You can use one of the given emails and passwords to check how programm work, or
 
 ## Project deploy
 
-1. **Vercel deploy:** [Helath-cards vercel](https://github.com/facebook/create-react-app)
-2. **Netlify deploy:** [Helath-cards netlify](https://github.com/facebook/create-react-app)
+1. **Vercel deploy:** [Helath-cards vercel](https://health-cards-88nhv3a0w-misha77b.vercel.app/)
+2. **Netlify deploy:** [Helath-cards netlify](https://nimble-belekoy-c49d9f.netlify.app/)
 
 # Getting Started with Create React App
 
