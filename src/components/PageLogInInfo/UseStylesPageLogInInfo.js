@@ -16,9 +16,16 @@ const UseStylesPageLogInInfo = makeStyles({
         '.logIn-info': {
             margin: '225px auto 25px', 
             fontFamily: 'Lato sans-serif',
+            ['@media (max-width: 768px)']: {
+                margin: '200px auto 20px', 
+            },
+            ['@media (max-width: 425px)']: {
+                margin: '150px auto 15px', 
+            }
         },
         '.auth-given-data': {
-            margin: '0 auto'
+            margin: '0 auto',
+            display: 'flex',
         },
         '.data-info': {
             margin: '5px 0'
@@ -27,13 +34,25 @@ const UseStylesPageLogInInfo = makeStyles({
             fontFamily: 'Lato',
         },
         '.data-to-auth-container': {
-            margin: 'auto',
             display: 'flex',
-            flexDirection: 'column'
+            flexDirection: 'column',            
+            justifyContent: 'center',
+            ['@media (max-width: 768px)']: {
+                width: '400px'
+            },
+            ['@media (max-width: 425px)']: {
+                width: '300px'
+            }
         },
         '.pass-registration' : {
             fontWeight: '400',
-            fontSize: '18px'
+            fontSize: '18px',                 
+            ['@media (max-width: 768px)']: {
+                width: '400px',   
+            },
+            ['@media (max-width: 425px)']: {
+                width: '300px',
+            }
         },
         '.get-data-link' :{
             color: 'black',
