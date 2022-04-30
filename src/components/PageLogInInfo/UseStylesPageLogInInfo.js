@@ -25,7 +25,6 @@ const UseStylesPageLogInInfo = makeStyles({
         },
         '.auth-given-data': {
             margin: '0 auto',
-            display: 'flex',
         },
         '.data-info': {
             margin: '5px 0'
@@ -34,9 +33,9 @@ const UseStylesPageLogInInfo = makeStyles({
             fontFamily: 'Lato',
         },
         '.data-to-auth-container': {
+            margin: '0 auto',
             display: 'flex',
-            flexDirection: 'column',            
-            justifyContent: 'center',
+            flexDirection: 'column',
             ['@media (max-width: 768px)']: {
                 width: '400px'
             },
